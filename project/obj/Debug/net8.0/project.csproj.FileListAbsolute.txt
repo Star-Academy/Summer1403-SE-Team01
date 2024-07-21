@@ -1,0 +1,15 @@
+C:\Users\amir\Desktop\Mohaymen_ict-project\firstProject\score\Summer1403-SE-Team01\project\bin\Debug\net8.0\project.exe
+C:\Users\amir\Desktop\Mohaymen_ict-project\firstProject\score\Summer1403-SE-Team01\project\bin\Debug\net8.0\project.deps.json
+C:\Users\amir\Desktop\Mohaymen_ict-project\firstProject\score\Summer1403-SE-Team01\project\bin\Debug\net8.0\project.runtimeconfig.json
+C:\Users\amir\Desktop\Mohaymen_ict-project\firstProject\score\Summer1403-SE-Team01\project\bin\Debug\net8.0\project.dll
+C:\Users\amir\Desktop\Mohaymen_ict-project\firstProject\score\Summer1403-SE-Team01\project\bin\Debug\net8.0\project.pdb
+C:\Users\amir\Desktop\Mohaymen_ict-project\firstProject\score\Summer1403-SE-Team01\project\obj\Debug\net8.0\project.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\amir\Desktop\Mohaymen_ict-project\firstProject\score\Summer1403-SE-Team01\project\obj\Debug\net8.0\project.AssemblyInfoInputs.cache
+C:\Users\amir\Desktop\Mohaymen_ict-project\firstProject\score\Summer1403-SE-Team01\project\obj\Debug\net8.0\project.AssemblyInfo.cs
+C:\Users\amir\Desktop\Mohaymen_ict-project\firstProject\score\Summer1403-SE-Team01\project\obj\Debug\net8.0\project.csproj.CoreCompileInputs.cache
+C:\Users\amir\Desktop\Mohaymen_ict-project\firstProject\score\Summer1403-SE-Team01\project\obj\Debug\net8.0\project.sourcelink.json
+C:\Users\amir\Desktop\Mohaymen_ict-project\firstProject\score\Summer1403-SE-Team01\project\obj\Debug\net8.0\project.dll
+C:\Users\amir\Desktop\Mohaymen_ict-project\firstProject\score\Summer1403-SE-Team01\project\obj\Debug\net8.0\refint\project.dll
+C:\Users\amir\Desktop\Mohaymen_ict-project\firstProject\score\Summer1403-SE-Team01\project\obj\Debug\net8.0\project.pdb
+C:\Users\amir\Desktop\Mohaymen_ict-project\firstProject\score\Summer1403-SE-Team01\project\obj\Debug\net8.0\project.genruntimeconfig.cache
+C:\Users\amir\Desktop\Mohaymen_ict-project\firstProject\score\Summer1403-SE-Team01\project\obj\Debug\net8.0\ref\project.dll
