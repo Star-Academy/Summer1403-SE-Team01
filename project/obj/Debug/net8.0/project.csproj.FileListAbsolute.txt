@@ -13,3 +13,9 @@ C:\Users\amir\Desktop\Mohaymen_ict-project\firstProject\score\Summer1403-SE-Team
 C:\Users\amir\Desktop\Mohaymen_ict-project\firstProject\score\Summer1403-SE-Team01\project\obj\Debug\net8.0\project.pdb
 C:\Users\amir\Desktop\Mohaymen_ict-project\firstProject\score\Summer1403-SE-Team01\project\obj\Debug\net8.0\project.genruntimeconfig.cache
 C:\Users\amir\Desktop\Mohaymen_ict-project\firstProject\score\Summer1403-SE-Team01\project\obj\Debug\net8.0\ref\project.dll
+C:\Users\amir\Desktop\Mohaymen_ict-project\firstProject\score\Summer1403-SE-Team01\project\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\amir\Desktop\Mohaymen_ict-project\firstProject\score\Summer1403-SE-Team01\project\obj\Debug\net8.0\project.csproj.AssemblyReference.cache
+C:\Users\amir\Desktop\Mohaymen_ict-project\firstProject\score\Summer1403-SE-Team01\project\obj\Debug\net8.0\project.csproj.GenerateResource.cache
+C:\Users\amir\Desktop\Mohaymen_ict-project\firstProject\score\Summer1403-SE-Team01\project\obj\Debug\net8.0\project.csproj.Up2Date
+C:\Users\amir\Desktop\Mohaymen_ict-project\firstProject\score\Summer1403-SE-Team01\project\obj\Debug\net8.0\project.Students.resources
+C:\Users\amir\Desktop\Mohaymen_ict-project\firstProject\score\Summer1403-SE-Team01\project\obj\Debug\net8.0\project.StudentsScore.resources
