@@ -33,34 +33,16 @@ namespace ScoreBoard
             set { _courses = value; }
         }
 
-        private double _avg;
-        public double Avg
+        private double _avergae;
+        public double Average
         {
-            get { return _avg; }
-            set { _avg = value; }
+            get { return _avergae; }
+            set { _avergae = value; }
         }
     }
 
 
-
-    public class Course
-    {
-        private string _name;
-        public string Name
-        {
-            get { return _name; }
-            set { _name = value; }
-        }
-
-        private double _score;
-        public double Score
-        {
-            get { return _score; }
-            set { _score = value; }
-        }
-    }
-
-    public class StudentLesson
+    public class StudentScore
     {
         private int _studentNumber;
         public int StudentNumber
@@ -95,39 +77,35 @@ namespace ScoreBoard
                 PropertyNameCaseInsensitive = true
             };
 
-            var json = File.ReadAllText("./files/students.json");
-            List<Student> students = JsonSerializer.Deserialize<List<Student>>(json, _options);
+            var studentsJson = File.ReadAllText("./files/students.json");
+            List<Student> students = JsonSerializer.Deserialize<List<Student>>(studentsJson, _options);
 
-            var json1 = File.ReadAllText("./files/scores.json");
-            List<StudentLesson> studentLessons = JsonSerializer.Deserialize<List<StudentLesson>>(json1, _options);
+            var scoreJson = File.ReadAllText("./files/scores.json");
+            List<StudentScore> studentScores = JsonSerializer.Deserialize<List<StudentScore>>(scoreJson, _options);
 
             int count = 0, i = 0;
             Student cur = students.ElementAt(i);
             double sum = 0;
 
-            foreach(var sl in studentLessons) 
+            foreach(var ss in studentScores) 
             {
-                if(sl.StudentNumber != cur.StudentNumber) {
-                    cur.Avg = (double)(sum/count);
+                if(ss.StudentNumber != cur.StudentNumber) {
+                    cur.Average = (double)(sum/count);
                     if(++i<=students.Count)
                         cur = students.ElementAt(i);
                     count = 0;
                     sum = 0;
                 }
-                cur.Courses.Add(sl.Lesson, sl.Score);
-                sum += sl.Score;
+                cur.Courses.Add(ss.Lesson, ss.Score);
+                sum += ss.Score;
                 count++;
             }
-
-            cur.Avg = (double)(sum / count);
-            var sorted = students.OrderByDescending(x=>x.Avg);
+            cur.Average = (double)(sum / count);
             
-            Student s0 = sorted.ElementAt(0);
-            Student s1 = sorted.ElementAt(1);
-            Student s2 = sorted.ElementAt(2);
-            Console.WriteLine(s0.FirstName + " " + s0.LastName + " " + s0.Avg);
-            Console.WriteLine(s1.FirstName + " " + s1.LastName + " " + s1.Avg);
-            Console.WriteLine(s2.FirstName + " " + s2.LastName + " " + s2.Avg);
+            var sorted = students.OrderByDescending(x=>x.Average).Take(3);
+            foreach(var s in sorted)
+                Console.WriteLine($"name: {s.FirstName} {s.LastName}, avg: {s.Average}");
+            
         }
     }
 }
