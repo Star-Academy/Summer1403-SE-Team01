@@ -9,7 +9,7 @@ public class QueryHandler {
         query.minusQuery = SeperateMinus(splittedText);
         query.ordinaryQuery = SeperateOrdinary(splittedText);
     }
-    public List<string> SeperatePlus(List<string> listStr)
+    private List<string> SeperatePlus(List<string> listStr)
     {
         var result = new List<string>();
         foreach(var lstr in listStr)
@@ -21,7 +21,7 @@ public class QueryHandler {
         }
         return result;
     }
-    public List<string> SeperateMinus(List<string> listStr)
+    private List<string> SeperateMinus(List<string> listStr)
     {
         var result = new List<string>();
         foreach(var lstr in listStr)
@@ -33,7 +33,7 @@ public class QueryHandler {
         }
         return result;
     }
-    public List<string> SeperateOrdinary(List<string> listStr)
+    private List<string> SeperateOrdinary(List<string> listStr)
     {
         var result = new List<string>();
         foreach(var lstr in listStr)
@@ -45,12 +45,12 @@ public class QueryHandler {
         }
         return result;
     }
-    public string UpperText(Query query)
+    private string UpperText(Query query)
     {
         var uppered = query.query.ToUpper();
         return uppered;
     }
-    public List<string> SplitText(Query query)
+    private List<string> SplitText(Query query)
     {
         var myString = Regex.Replace(query.query, @"\s+", " ");
         var splittedText = myString.Split(" ").ToList();

@@ -5,12 +5,12 @@ public class ResultHandler {
         RemoveNotOptionalWords(result, flag);
     }
 
-    public void RemoveMinusWords(Result result)
+    private void RemoveMinusWords(Result result)
     {
         result.documents  = result.OrdinaryDocuments.Except(result.MinesDocuments).ToList();
     }
 
-    public void RemoveNotOptionalWords(Result result, bool hasPlusWord) 
+    private void RemoveNotOptionalWords(Result result, bool hasPlusWord) 
     {
         if(hasPlusWord)
             result.documents = result.documents.Intersect(result.plusDocuments).ToList();

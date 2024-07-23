@@ -1,14 +1,14 @@
 public class Mapper
 {
-    public List<Document> docList;
-    public Mapper(List<Document> docList)
+    public List<Document> documentList;
+    public Mapper(List<Document> documentList)
     {
-        this.docList = docList;
+        this.documentList = documentList;
     }
     public Dictionary<string, List<Document>> Map()
     {
         var tempDic = new Dictionary<string, HashSet<Document>>();
-        foreach(var d in docList)
+        foreach(var d in documentList)
         {
             foreach(var w in d.words)
             {
@@ -19,8 +19,8 @@ public class Mapper
                 tempDic[w].Add(d);
             }
         }
-        var dic = tempDic.ToDictionary(kvp => kvp.Key, kvp => kvp.Value.ToList());
+        var dictionary = tempDic.ToDictionary(kvp => kvp.Key, kvp => kvp.Value.ToList());
 
-        return dic;
+        return dictionary;
     }
 }

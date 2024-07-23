@@ -2,17 +2,17 @@ using System.Linq.Expressions;
 
 public class SearchHandler 
 {
-    public Dictionary<string, List<Document>> dic{ get; set;}
+    public Dictionary<string, List<Document>> dictionary{ get; set;}//inverted index
     public QueryHandler queryHandler;
     public ResultHandler resultHandler;
-    public SearchHandler(Dictionary<string, List<Document>> dic)
+    public SearchHandler(Dictionary<string, List<Document>> dictionary)
     {
-        this.dic = dic;
+        this.dictionary = dictionary;
         queryHandler = new QueryHandler();
         resultHandler = new ResultHandler();
     }
 
-    public Search search(string input)
+    public Search Search(string input)
     {
         var query = new Query(input);
         queryHandler.Prepare(query);
@@ -32,53 +32,58 @@ public class SearchHandler
         return search;
     }
 
-    public List<Document> ExtractPlusResult(Query query) {
+    private List<Document> ExtractPlusResult(Query query) {
         var plusDocs = new List<Document>();
         
         foreach(var s in query.plusQuery) {
-            if (dic.ContainsKey(s))
-                plusDocs = plusDocs.Union(dic[s]).ToList();
+            if (dictionary.ContainsKey(s))
+                plusDocs = plusDocs.Union(dictionary[s]).ToList();
         }
         return plusDocs;
     }
 
-    public List<Document> ExtractMinusResult(Query query) {
+    private List<Document> ExtractMinusResult(Query query) {
         var MinusDocs = new List<Document>();
         foreach(var s in query.minusQuery) {
-            if (dic.ContainsKey(s))
-                MinusDocs = MinusDocs.Union(dic[s]).ToList();
+            if (dictionary.ContainsKey(s))
+                MinusDocs = MinusDocs.Union(dictionary[s]).ToList();
         }
         return MinusDocs;
     }
 
-    public List<Document> ExtractOrdinaryResult(Query query) 
+    private List<Document> ExtractOrdinaryResult(Query query) 
     {
         var ordinaryDocs = new List<Document>();
 
-        if(query.ordinaryQuery.Count != 0 && dic.ContainsKey(query.ordinaryQuery[0])){
-            ordinaryDocs = new List<Document>(dic[query.ordinaryQuery[0]]);
-            foreach(var s in query.ordinaryQuery) {
-                if (dic.ContainsKey(s))
-                    ordinaryDocs = ordinaryDocs.Intersect(dic[s]).ToList();
-
-                else
-                {
-                    ordinaryDocs.Clear();
-                    break;
-                }
-            } return ordinaryDocs;
-        }
+        if(query.ordinaryQuery.Count != 0 && dictionary.ContainsKey(query.ordinaryQuery[0]))
+            return ExtractFindOrdinaryResult(ordinaryDocs, query);
 
         else if(query.ordinaryQuery.Count == 0)
-            return getUniversal();
+            return GetUniversal();
         
         else
             return ordinaryDocs;        
     }
 
-    public List<Document> getUniversal() {
+    private List<Document> ExtractFindOrdinaryResult(List<Document> ordinaryDocs, Query query) 
+    {
+        ordinaryDocs = new List<Document>(dictionary[query.ordinaryQuery[0]]);
+        foreach(var s in query.ordinaryQuery)
+        {
+            if (dictionary.ContainsKey(s))
+                ordinaryDocs = ordinaryDocs.Intersect(dictionary[s]).ToList();
+
+            else
+            {
+                ordinaryDocs.Clear();
+                break;
+            }
+        } 
+        return ordinaryDocs;
+    }
+    private List<Document> GetUniversal() {
         HashSet<Document> hashSet = new HashSet<Document>();
-            foreach(var d in dic)
+            foreach(var d in dictionary)
             {
                 foreach(var element in d.Value)
                 {

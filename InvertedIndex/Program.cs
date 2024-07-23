@@ -1,37 +1,33 @@
 ﻿using System;
-using System.Data;
-using System.Data.Common;
-using System.Dynamic;
-using System.IO;
-
 class Program
 {
     static async Task Main(string[] args)
     {
         //read data 
-        var fr = new FileReader();
-        var fe = new FileEditor();
+        var fileReader = new FileReader();
+        var fileEditor = new FileEditor();
 
-        //Collecting and operate data -> ./EnglishData
-        var dh = new DocumentHandler(fr, fe);
-        var docList = new List<Document>();
-        string folderPath = Console.ReadLine(); 
+
+        var documentHandler = new DocumentHandler(fileReader, fileEditor);
+        var documentList = new List<Document>();
+        //Collecting and operate data -> ./Resources/EnglishData
+        string folderPath = Console.ReadLine();
         try
         {
             var files = Directory.GetFiles(folderPath);
             foreach (string file in files)
             {
-                var doc = await dh.ExtractDoc( folderPath +"/"+Path.GetFileName(file));
-                docList.Add(doc);
+                var doc = await documentHandler.ExtractDoc(folderPath +"/"+Path.GetFileName(file));
+                documentList.Add(doc);
             }
         }
-        catch (Exception e)
+        catch (DirectoryNotFoundException dirEx)
         {
-            Console.WriteLine("Folder(File) not found: ",e);
+            Console.WriteLine("Directory not found: " + dirEx.Message);
         }
 
         //Mapping data beetwen words and doc
-        var mapper = new Mapper(docList);
+        var mapper = new Mapper(documentList);
         var map = mapper.Map();
 
         //search
@@ -39,7 +35,7 @@ class Program
         string input;
         while((input = Console.ReadLine()) != "end")
         {
-            var searchResult = sh.search(input).result;
+            var searchResult = sh.Search(input).result;
             foreach (var answer in searchResult.documents)
                 Console.WriteLine(answer.name);
         }
