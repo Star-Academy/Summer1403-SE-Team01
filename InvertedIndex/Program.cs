@@ -21,6 +21,7 @@ class Program
         {
             var doc = await dh.ExtractDoc("./EnglishData/"+Path.GetFileName(file));
             docList.Add(doc);
+            Console.WriteLine(Path.GetFileName(file));
         }
 
         //Mapping data beetwen words and doc

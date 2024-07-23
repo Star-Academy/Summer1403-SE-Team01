@@ -1,39 +1,26 @@
 public class Mapper
 {
-    public List<Document> dockList;
-    public Mapper(List<Document> dockList)
+    public List<Document> docList;
+    public Mapper(List<Document> docList)
     {
-        this.dockList = dockList;
+        this.docList = docList;
     }
     public Dictionary<string, List<Document>> Map()
     {
-        Dictionary<string, List<Document>> dic = new Dictionary<string, List<Document>>();
-        var unique = ExtractTerms(this.dockList);
-        
-        foreach(var s in unique)
+        Dictionary<string, HashSet<Document>> tempDic = new Dictionary<string, HashSet<Document>>();
+        foreach(var d in docList)
         {
-            List<Document> l = new List<Document>(); 
-            foreach(var d in this.dockList) {
-                if(d.words.Contains(s)) {
-                    l.Add(d);
+            foreach(var w in d.words)
+            {
+                if (!tempDic.ContainsKey(w))
+                {
+                    tempDic[w] = new HashSet<Document>();
                 }
+                tempDic[w].Add(d);
             }
-            dic.Add(s, l);
         }
+        var dic = tempDic.ToDictionary(kvp => kvp.Key, kvp => kvp.Value.ToList());
+
         return dic;
-        
-    }
-    public HashSet<string> ExtractTerms(List<Document> docList)
-    {
-        HashSet<string> terms = new HashSet<string>();
-        dockList.ForEach(d=>d.words.ForEach(w=>terms.Add(w)));
-        // foreach(var d in docList)
-        // {
-        //     foreach(var s in d.words) 
-        //     {
-        //         terms.Add(s);
-        //     }
-        // }
-        return terms;
     }
 }
