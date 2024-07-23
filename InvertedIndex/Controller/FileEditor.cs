@@ -1,10 +1,5 @@
 using System.Text.RegularExpressions;
 public class FileEditor {
-    //public Document document { get; set; }
-    //clear useless
-    //split
-    //upercase
-    //set->list
     public string ToUpper(string text)
     {
         var uppered = text.ToUpper();
@@ -13,7 +8,7 @@ public class FileEditor {
     
     public List<string> Split(string text)
     {
-        //Console.WriteLine("------------");
+
         var splittedText = text.Split(" ").ToList();
         return splittedText;
     }

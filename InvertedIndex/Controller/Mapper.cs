@@ -7,7 +7,7 @@ public class Mapper
     }
     public Dictionary<string, List<Document>> Map()
     {
-        Dictionary<string, HashSet<Document>> tempDic = new Dictionary<string, HashSet<Document>>();
+        var tempDic = new Dictionary<string, HashSet<Document>>();
         foreach(var d in docList)
         {
             foreach(var w in d.words)

@@ -1,9 +1,9 @@
-public class DocHandler
+public class DocumentHandler
 {
     public FileReader fr{get; set;}
     public FileEditor fe{get; set;}
 
-    public DocHandler(FileReader fr, FileEditor fe)
+    public DocumentHandler(FileReader fr, FileEditor fe)
     {
         this.fr = fr;
         this.fe = fe;
@@ -11,10 +11,10 @@ public class DocHandler
 
     public async Task<Document> ExtractDoc(string dockPath)
     {
-        var str = await fr.Read("./EnglishData/"+Path.GetFileName(dockPath));
+        var str = await fr.ReadAsync("./EnglishData/"+Path.GetFileName(dockPath));
         var myString = fe.RemoveExtraSpace(str);
         var words = fe.Split(fe.ToUpper(myString));
-        Document doc = new Document(Path.GetFileName(dockPath), "./EnglishData/"+Path.GetFileName(dockPath), myString, words);
+        var doc = new Document(Path.GetFileName(dockPath), "./EnglishData/"+Path.GetFileName(dockPath), myString, words);
         return doc;
     } 
     

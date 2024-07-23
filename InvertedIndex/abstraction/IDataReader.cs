@@ -1,4 +1,4 @@
 interface IDataReader
 {
-    public Task<string> Read(string path);
+    public Task<string> ReadAsync(string path);
 }
