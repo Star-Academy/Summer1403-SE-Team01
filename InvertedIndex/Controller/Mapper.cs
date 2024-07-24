@@ -1,11 +1,6 @@
 public class Mapper
 {
-    public List<Document> documentList;
-    public Mapper(List<Document> documentList)
-    {
-        this.documentList = documentList;
-    }
-    public Dictionary<string, List<Document>> Map()
+    public Dictionary<string, List<Document>> Map(List<Document> documentList)
     {
         var tempDic = new Dictionary<string, HashSet<Document>>();
         foreach(var d in documentList)

@@ -23,10 +23,11 @@ public class SearchHandler
         result.OrdinaryDocuments = ExtractOrdinaryResult(query);
 
 
-        if(query.plusQuery.Count() == 0)
+        resultHandler.Prepare(result,query.plusQuery.Count() == 0?false:true);
+        /*if(query.plusQuery.Count() == 0)
             resultHandler.Prepare(result, false);
         else
-            resultHandler.Prepare(result, true);
+            resultHandler.Prepare(result, true);*/
 
         var search = new Search(query, result);    
         return search;

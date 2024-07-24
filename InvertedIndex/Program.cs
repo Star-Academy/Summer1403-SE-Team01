@@ -27,8 +27,8 @@ class Program
         }
 
         //Mapping data beetwen words and doc
-        var mapper = new Mapper(documentList);
-        var map = mapper.Map();
+        var mapper = new Mapper();
+        var map = mapper.Map(documentList);
 
         //search
         var sh = new SearchHandler(map);
