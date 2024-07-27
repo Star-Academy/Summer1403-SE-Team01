@@ -1,8 +1,12 @@
 public class Result
 {
-    public List<Document> documents { get; set; }
-    public List<Document> plusDocuments { get; set; }
-    public List<Document> MinesDocuments { get; set; }
-    public List<Document> OrdinaryDocuments { get; set; }
+    public Result()
+    {
+        map = new Dictionary<char, List<Document>>();
+    }
+
+    
+    public List<Document> documents { get; set; }    
+    public Dictionary<char, List<Document>> map {get; set;}
 
 }

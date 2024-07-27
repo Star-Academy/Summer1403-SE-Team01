@@ -7,12 +7,12 @@ public class ResultHandler {
 
     private void RemoveMinusWords(Result result)
     {
-        result.documents  = result.OrdinaryDocuments.Except(result.MinesDocuments).ToList();
+        result.documents  = result.map['+'].Except(result.map['-']).ToList();
     }
 
     private void RemoveNotOptionalWords(Result result) 
     {
-        result.documents = result.documents.Intersect(result.plusDocuments).ToList();
+        result.documents = result.documents.Intersect(result.map[' ']).ToList();
     } 
 
 }

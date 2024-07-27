@@ -2,21 +2,18 @@ using System.Text.RegularExpressions;
 //fill query.*
 public class QueryHandler {
 
-    public void Prepare(Query query, QueryEditor qe)
+    public void Prepare(Query query, QueryEditor queryEditor, List<char> signs)
     {
-        query.query = qe.ToUpper(query.query);
-        var splittedText = qe.Split(query.query);
-        
-        query.plusQuery = Seperate(splittedText, '+');
-        splittedText = splittedText.Except(query.plusQuery).ToList();
-        query.minusQuery = Seperate(splittedText, '-');
-        splittedText = splittedText.Except(query.minusQuery).ToList();
-        query.ordinaryQuery = splittedText;
+        query.query = queryEditor.ToUpper(query.query);
+        var splittedText = queryEditor.Split(query.query);
 
-
-        query.plusQuery = SepratePrefix(query.plusQuery, '+');
-        query.minusQuery = SepratePrefix(query.minusQuery, '-');
-
+        foreach(var k in signs)
+        {
+            var temp = Seperate(splittedText, k);
+            splittedText = splittedText.Except(temp).ToList();
+            query.map.Add(k, SepratePrefix(temp, k));
+        }
+        query.map[' '] = splittedText;
     }
 
     private List<string> Seperate(List<string> list, char c)
@@ -29,11 +26,9 @@ public class QueryHandler {
     }
     private List<string> SepratePrefix(List<string> input, char c)
     {
-
         var result = new List<string>();
-        foreach(var s in input) {
-            result.Add(s.Substring(1, s.Length - 1));
-        } 
+        input.ForEach(s=>result.Add(s.Substring(1, s.Length - 1)));
+        
         return result;
     }
 }

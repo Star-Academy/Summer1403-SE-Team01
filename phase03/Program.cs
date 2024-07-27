@@ -3,15 +3,13 @@ class Program
 {
     static async Task Main(string[] args)
     {
-        //read data 
         var fileReader = new FileReader();
         var fileEditor = new FileEditor();
-
-
         var documentHandler = new DocumentHandler();
         var documentList = new List<Document>();
         //Collecting and operate data -> ./Resources/EnglishData
         string folderPath = Console.ReadLine();
+
         try
         {
             var files = Directory.GetFiles(folderPath);
@@ -41,3 +39,5 @@ class Program
         }
     }
 }
+//cat +reza -Demand!
+//cat reza
