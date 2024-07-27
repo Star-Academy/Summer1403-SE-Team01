@@ -4,7 +4,7 @@ class Program
     static async Task Main(string[] args)
     {
         var fileReader = new FileReader();
-        var fileEditor = new FileEditor();
+        var fileEditor = new FileProcessor();
         var documentHandler = new DocumentHandler();
         var documentList = new List<Document>();
         //Collecting and operate data -> ./Resources/EnglishData
