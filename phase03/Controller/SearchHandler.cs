@@ -26,7 +26,7 @@ public class SearchHandler
 
         //resultHandler.Prepare(result);
 
-        var y = new ResultDriver(new List<IResultable>(){new ResultPlus(), new ResultMinus()}, result);
+        var y = new ResultDriver(new List<IResultable>(){new ResultOrdinary(), new ResultPlus(), new ResultMinus()}, result);
 
         var search = new Search(query, result);    
         return search;
