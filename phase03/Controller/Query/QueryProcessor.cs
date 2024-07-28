@@ -23,10 +23,7 @@ public class QueryProcessor : IQueryProcessor
 
     public List<string> ExtractBySign(List<string> list, char c)
     {
-        var result = new List<string>();        
-        list.Where(x => x[0]==c).ToList().ForEach(l=>result.Add(l));
-
-        return result;
+        return list.Where(x => x[0]==c).ToList();
     }
 
     public List<string> SeparatePrefix(List<string> input)

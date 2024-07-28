@@ -6,5 +6,6 @@ public class Query
     public Query(string text)
     {
         this.text = text;
+
     }
 }

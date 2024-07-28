@@ -8,12 +8,14 @@ class Program
         {
             //read
             var files = Directory.GetFiles(folderPath);
-            DocumentExtractor documentExtractor = new DocumentExtractor();
-            TextProcessor textProcessor = new TextProcessor();
+            var documentExtractor = new DocumentExtractor();
+            var textProcessor = new TextProcessor();
+            var multiTextFileReader = new MultiTextFileReader();
             var documentList = await documentExtractor
             .ExtractDocuments(files
             .Select(f=>Path.GetFullPath(f)).ToList(), 
-            textProcessor);
+            textProcessor,
+            multiTextFileReader);
 
             // map data
             InvertedIndexMapper invertedIndexMapper = new InvertedIndexMapper();
@@ -32,7 +34,7 @@ class Program
         }
         catch(DirectoryNotFoundException e)
         {
-            Console.WriteLine("Path of folder doesn't  exists: ", e.Message);
+            Console.WriteLine(e.Message);
         }
     }
 }

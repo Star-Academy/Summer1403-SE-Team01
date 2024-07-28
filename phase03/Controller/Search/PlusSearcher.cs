@@ -1,5 +1,5 @@
 
-public class PlusSearcher : ISearcher//sign
+public class PlusSearcher : ISearcher
 {
     public char Sign {get; init;} = '+';
 
@@ -14,8 +14,9 @@ public class PlusSearcher : ISearcher//sign
             .Union(dictionary[x]).ToList());
         return plusDocs;
     }
-    private List<Document> GetUniversal(Dictionary<string,List<Document>> dictionary) {  // suplicated code
-        HashSet<Document> hashSet = new HashSet<Document>();
+    private List<Document> GetUniversal(Dictionary<string,List<Document>> dictionary)
+    {
+        var hashSet = new HashSet<Document>();
             dictionary.Values.ToList().ForEach(d=>d.ForEach(x=>hashSet.Add(x)));
             return hashSet.ToList();
     }

@@ -13,6 +13,7 @@ public class TextProcessor : IProcessor{
         var splittedText = text.Split(" ").ToList();
         return splittedText;
     }
+    
     public string RemoveExtraSpace(string str)
     {
         var myString = Regex.Replace(str, @"\s+", " ");

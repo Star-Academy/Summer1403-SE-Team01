@@ -10,7 +10,7 @@ public class Document
         Name = name;
         Path = path;
         Text = text;
-        Words = new List<string>(words); // Create a copy to ensure immutability
+        Words = new List<string>(words);
     }
     public override string ToString()
     {

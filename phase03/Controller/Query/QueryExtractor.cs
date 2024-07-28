@@ -1,4 +1,3 @@
-using System.Text.RegularExpressions;
 //fill query.*
 public class QueryExtractor : IQueryExtractor
 {
@@ -14,10 +13,11 @@ public class QueryExtractor : IQueryExtractor
         query.text = _queryProcessor.ToUpper(query.text);
         var splittedText = _queryProcessor.Split(query.text);
 
-        foreach(var sign in signs) {
-            var temp = _queryProcessor.ExtractBySign(splittedText, sign);
-            splittedText = splittedText.Except(temp).ToList();
-            query.signToWordDictionary.Add(sign, _queryProcessor.SeparatePrefix(temp));
+        foreach(var sign in signs)
+        {
+            var texts = _queryProcessor.ExtractBySign(splittedText, sign);
+            splittedText = splittedText.Except(texts).ToList();
+            query.signToWordDictionary.Add(sign, _queryProcessor.SeparatePrefix(texts));
         }
         query.signToWordDictionary[' '] = splittedText;
     }
