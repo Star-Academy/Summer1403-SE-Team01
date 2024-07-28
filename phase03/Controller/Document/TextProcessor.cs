@@ -1,17 +1,6 @@
 using System.Text.RegularExpressions;
 public class TextProcessor : IProcessor{
 
-    private static TextProcessor instance;
-
-    private TextProcessor() {}
-
-    public static TextProcessor getInstance() {
-        if(instance == null) {
-            instance = new TextProcessor();
-        }
-        return instance;
-    }
-
     public string ToUpper(string text)
     {
         var uppered = text.ToUpper();

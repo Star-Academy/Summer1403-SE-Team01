@@ -3,18 +3,6 @@ using System.Text.RegularExpressions;
 
 public class QueryProcessor : IQueryProcessor
 {
-    private static QueryProcessor instance;
-
-    private QueryProcessor() {}
-
-    public static QueryProcessor getInstance() {
-        if(instance == null) {
-            instance = new QueryProcessor();
-        }
-        return instance;
-    }
-
-
     public string ToUpper(string text)
     {
         var uppered = text.ToUpper();

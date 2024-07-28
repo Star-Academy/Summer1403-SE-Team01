@@ -8,13 +8,16 @@ class Program
         {
             //read
             var files = Directory.GetFiles(folderPath);
-            var documentList = await DocumentExtractor.getInstance()
+            DocumentExtractor documentExtractor = new DocumentExtractor();
+            TextProcessor textProcessor = new TextProcessor();
+            var documentList = await documentExtractor
             .ExtractDocuments(files
             .Select(f=>Path.GetFullPath(f)).ToList(), 
-            TextProcessor.getInstance());
+            textProcessor);
 
             // map data
-            var InvertedIndex = InvertedIndexMapper.getInstance().Map(documentList);
+            InvertedIndexMapper invertedIndexMapper = new InvertedIndexMapper();
+            var InvertedIndex = invertedIndexMapper.Map(documentList);
 
             // search 
             var searchHandler = new SearchHandler(InvertedIndex);

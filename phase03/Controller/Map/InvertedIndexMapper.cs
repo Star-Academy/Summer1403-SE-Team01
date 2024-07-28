@@ -1,16 +1,5 @@
 public class InvertedIndexMapper : IMapper
 {
-    private static InvertedIndexMapper instance;
-
-    private InvertedIndexMapper() {}
-
-    public static InvertedIndexMapper getInstance() {
-        if(instance == null) {
-            instance = new InvertedIndexMapper();
-        }
-        return instance;
-    }
-
     public Dictionary<string, List<Document>> Map(List<Document> documentList)
     {
         var invertedIndex = documentList

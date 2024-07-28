@@ -6,7 +6,7 @@ public class SearchHandler // get query and result handler as property or as par
     public List<IFilterer> filterables = new List<IFilterer>(){new NoSignedFilterer(), new PlusFilterer(), new MinusFilterer()};
     public SearcherDriver searcherDriver = new SearcherDriver();
     public FiltererDirver filteretDriver = new FiltererDirver();
-    public QueryExtractor queryExtractor = new QueryExtractor(QueryProcessor.getInstance());
+    public QueryExtractor queryExtractor = new QueryExtractor(new QueryProcessor());
     public SearchHandler(Dictionary<string, List<Document>> invertedIndex)
     {
         this.dictionary = invertedIndex;
