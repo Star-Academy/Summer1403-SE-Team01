@@ -1,9 +1,9 @@
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 
 public class FiltererDirver {
-    public FiltererDirver(IEnumerable<IFilterer> resultables, Result result) {
-        foreach(var r in resultables) {
-            r.Filter(result);
-        }
+    public void DriveFilterer(IEnumerable<IFilterer> filterers, Result result)
+    {
+        filterers.ToList().ForEach(r=>r.Filter(result));
     }
 }

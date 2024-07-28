@@ -1,5 +1,17 @@
 using System.Text.RegularExpressions;
-public class FileProcessor : IProcessor{
+public class TextProcessor : IProcessor{
+
+    private static TextProcessor instance;
+
+    private TextProcessor() {}
+
+    public static TextProcessor getInstance() {
+        if(instance == null) {
+            instance = new TextProcessor();
+        }
+        return instance;
+    }
+
     public string ToUpper(string text)
     {
         var uppered = text.ToUpper();
@@ -17,10 +29,4 @@ public class FileProcessor : IProcessor{
         var myString = Regex.Replace(str, @"\s+", " ");
         return myString;
     }
-
-    public List<string> DeleteStopWord(List<string> word)
-    {
-        return null;
-    }
-
 }

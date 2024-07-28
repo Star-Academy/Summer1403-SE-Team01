@@ -1,15 +1,19 @@
-public class Document
+public class Document 
 {
-    public string name { get; set; }
-    public string path { get; set; }
-    public string text { get; set; }
-    public List<string> words { get; set; }
+    public string Name { get; }
+    public string Path { get; }
+    public string Text { get; }
+    public List<string> Words { get; }
 
     public Document(string name, string path, string text, List<string> words)
     {
-        this.name = name;
-        this.path = path;
-        this.text = text;
-        this.words = words;
+        Name = name;
+        Path = path;
+        Text = text;
+        Words = new List<string>(words); // Create a copy to ensure immutability
+    }
+    public override string ToString()
+    {
+        return $"Name:{Name}";
     }
 }

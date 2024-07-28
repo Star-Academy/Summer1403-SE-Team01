@@ -1,11 +1,10 @@
 public class Query
 {
-    public Query(string input)
+    public string text { get; set; }
+    public Dictionary<char, List<string>> signToWordDictionary {get; set;} = new Dictionary<char, List<string>>();
+
+    public Query(string text)
     {
-        this.query = input;
-        this.map = new Dictionary<char, List<string>>();
+        this.text = text;
     }
-    public string query { get; set; }
-  
-    public Dictionary<char, List<string>> map {get; set;}
 }

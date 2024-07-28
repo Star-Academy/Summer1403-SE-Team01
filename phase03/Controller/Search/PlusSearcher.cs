@@ -1,19 +1,15 @@
 
 public class PlusSearcher : ISearcher//sign
 {
-    public char sign { get; set; }
-
-    public PlusSearcher(char sign) {
-        this.sign = sign;
-    }
+    public char Sign {get; init;} = '+';
 
     public List<Document> Search(Query query, Dictionary<string,List<Document>> dictionary)
     {
         var plusDocs = new List<Document>();
-        if(query.map[sign].Count == 0)
+        if(query.signToWordDictionary[Sign].Count == 0)
             plusDocs = GetUniversal(dictionary);
         else
-            query.map[sign].Where(s=>dictionary.ContainsKey(s)).ToList()
+            query.signToWordDictionary[Sign].Where(s=>dictionary.ContainsKey(s)).ToList()
             .ForEach(x=> plusDocs = plusDocs
             .Union(dictionary[x]).ToList());
         return plusDocs;

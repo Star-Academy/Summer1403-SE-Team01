@@ -3,41 +3,33 @@ class Program
 {
     static async Task Main(string[] args)
     {
-        var fileReader = new FileReader();
-        var fileEditor = new FileProcessor();
-        var documentHandler = new DocumentHandler();
-        var documentList = new List<Document>();
-        //Collecting and operate data -> ./Resources/EnglishData
-        string folderPath = Console.ReadLine();
-
+        string folderPath = Console.ReadLine();// ./Resources/EnglishData
         try
         {
+            //read
             var files = Directory.GetFiles(folderPath);
-            foreach (string file in files)
+            var documentList = await DocumentExtractor.getInstance()
+            .ExtractDocuments(files
+            .Select(f=>Path.GetFullPath(f)).ToList(), 
+            TextProcessor.getInstance());
+
+            // map data
+            var InvertedIndex = InvertedIndexMapper.getInstance().Map(documentList);
+
+            // search 
+            var searchHandler = new SearchHandler(InvertedIndex);
+            string input;
+            while((input = Console.ReadLine()) != "end")
             {
-                var doc = await documentHandler.ExtractDoc(folderPath +"/"+Path.GetFileName(file), fileReader, fileEditor);
-                documentList.Add(doc);
+                searchHandler.Search(input).result
+                .documents.ForEach(result => 
+                    Console.WriteLine(result));
             }
+            
         }
-        catch (DirectoryNotFoundException dirEx)
+        catch(DirectoryNotFoundException e)
         {
-            Console.WriteLine("Directory not found: " + dirEx.Message);
-        }
-
-        //Mapping data beetwen words and doc
-        var mapper = new Mapper();
-        var map = mapper.Map(documentList);
-
-        //search
-        var sh = new SearchHandler(map);
-        string input;
-        while((input = Console.ReadLine()) != "end")
-        {
-            var searchResult = sh.Search(input).result;
-            foreach (var answer in searchResult.documents)
-                Console.WriteLine(answer.name);
+            Console.WriteLine("Path of folder doesn't  exists: ", e.Message);
         }
     }
 }
-//cat +reza -Demand!
-//cat reza
