@@ -2,12 +2,13 @@
 public class NoSignedSearcher : ISearcher
 {
     public char Sign {get; init;} = ' ';
+    public UniversalSearch universalSearch = new UniversalSearch();
     public List<Document> Search(Query query, Dictionary<string, List<Document>> InvertedIndex)
     {
         var ordinaryDocs = new List<Document>();
-
+        
         if(query.signToWordDictionary[Sign].Count == 0)
-            ordinaryDocs = GetUniversal(InvertedIndex);
+            ordinaryDocs = universalSearch.GetUniversal(InvertedIndex);
         
         else if(InvertedIndex.ContainsKey(query.signToWordDictionary[Sign][0]))
             ordinaryDocs = SearchIfContain(query, InvertedIndex);
@@ -30,10 +31,5 @@ public class NoSignedSearcher : ISearcher
             }
         }
         return ordinaryDocs;
-    }
-    private List<Document> GetUniversal(Dictionary<string,List<Document>> dictionary) {
-        var hashSet = new HashSet<Document>();
-            dictionary.Values.ToList().ForEach(d=>d.ForEach(x=>hashSet.Add(x)));
-            return hashSet.ToList();
     }
 }

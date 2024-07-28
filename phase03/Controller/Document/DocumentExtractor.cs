@@ -7,7 +7,7 @@ public class DocumentExtractor : IDocumentExtractor
         
         for(int i=0; i<filePaths.Count; i++)
         {
-            var words = textProcessor.Split(textProcessor.ToUpper(textProcessor.RemoveExtraSpace(texts[i])));
+            var words = textProcessor.Split(textProcessor.ToUpper(textProcessor.RemoveExtraSpace(texts[i])));//To do
             var document = new Document(Path.GetFileName(filePaths[i]), filePaths[i], texts[i], words);
             documents.Add(document);
         }

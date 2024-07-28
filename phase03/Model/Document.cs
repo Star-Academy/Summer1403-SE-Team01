@@ -1,4 +1,4 @@
-public class Document 
+public class Document
 {
     public string Name { get; }
     public string Path { get; }
