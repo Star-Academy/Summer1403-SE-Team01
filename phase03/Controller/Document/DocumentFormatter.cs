@@ -1,6 +1,6 @@
 using System.Text.RegularExpressions;
-public class TextProcessor : IProcessor{
-
+public class DocumentFormatter : IDocumentFormatter{
+    private const string RegexPattern = "\\s+";
     public string ToUpper(string text)
     {
         var uppered = text.ToUpper();
@@ -16,7 +16,6 @@ public class TextProcessor : IProcessor{
     
     public string RemoveExtraSpace(string str)
     {
-        var myString = Regex.Replace(str, @"\s+", " ");
-        return myString;
+        return Regex.Replace(str, RegexPattern, " ");
     }
 }

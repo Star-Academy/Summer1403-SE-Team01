@@ -1,7 +1,7 @@
 
 using System.Text.RegularExpressions;
 
-public class QueryProcessor : IQueryProcessor
+public class QueryFormatter : IQueryFormatter
 {
     public string ToUpper(string text)
     {

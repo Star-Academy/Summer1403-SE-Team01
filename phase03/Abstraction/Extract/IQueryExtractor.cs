@@ -1,4 +1,4 @@
 public interface IQueryExtractor
 {
-    public void ExtractQuery(Query query, List<char> signs);
+    public void Extract(Query query, List<char> signs);
 }

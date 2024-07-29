@@ -8,21 +8,20 @@ class Program
         {
             //read
             var files = Directory.GetFiles(folderPath);
-            var documentExtractor = new DocumentExtractor();
-            var textProcessor = new TextProcessor();
+            var textProcessor = new DocumentFormatter();
             var multiTextFileReader = new MultiTextFileReader();
+            var documentExtractor = new DocumentExtractor(textProcessor, multiTextFileReader);
+
             var documentList = await documentExtractor
-            .ExtractDocuments(files
-            .Select(f=>Path.GetFullPath(f)).ToList(), 
-            textProcessor,
-            multiTextFileReader);
+            .Extract(files
+            .Select(f=>Path.GetFullPath(f)).ToList());
 
             // map data
             InvertedIndexMapper invertedIndexMapper = new InvertedIndexMapper();
             var InvertedIndex = invertedIndexMapper.Map(documentList);
 
             // search 
-            var searchHandler = new SearchHandler(InvertedIndex);
+            var searchHandler = new SearchHandler(InvertedIndex, new SearcherDriver(), new FiltererDirver(), new QueryExtractor(new QueryFormatter()));
             string input;
             while((input = Console.ReadLine()) != "end")
             {

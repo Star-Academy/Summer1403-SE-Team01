@@ -1,15 +1,20 @@
+using System.Data.Common;
+
 public class SearchHandler // get query and result handler as property or as parameter
 {
     public Dictionary<string, List<Document>> dictionary{ get; set;}
     public List<char> signs = new List<char>{'+', '-', ' '};
     public List<ISearcher> searchers = new List<ISearcher>(){new MinusSearcher(), new PlusSearcher(), new NoSignedSearcher()}; 
     public List<IFilterer> filterables = new List<IFilterer>(){new NoSignedFilterer(), new PlusFilterer(), new MinusFilterer()};
-    public SearcherDriver searcherDriver = new SearcherDriver();
-    public FiltererDirver filteretDriver = new FiltererDirver();
-    public QueryExtractor queryExtractor = new QueryExtractor(new QueryProcessor());
-    public SearchHandler(Dictionary<string, List<Document>> invertedIndex)
+    public ISearcherDriver searcherDriver;
+    public IFiltererDriver filteretDriver;
+    public IQueryExtractor queryExtractor;
+    public SearchHandler(Dictionary<string, List<Document>> invertedIndex, ISearcherDriver searcherDriver, IFiltererDriver filtererDriver, IQueryExtractor queryExtractor)
     {
         this.dictionary = invertedIndex;
+        this.searcherDriver = searcherDriver;
+        this.filteretDriver = filtererDriver;
+        this.queryExtractor = queryExtractor;
     }
 
     public Search Search(string input)
@@ -18,7 +23,7 @@ public class SearchHandler // get query and result handler as property or as par
         var result = new Result();
         var search = new Search(query, result);    
 
-        queryExtractor.ExtractQuery(query, signs);
+        queryExtractor.Extract(query, signs);
         searcherDriver.DriveSearch(searchers, query, result, dictionary);
         filteretDriver.DriveFilterer(filterables, result);
 

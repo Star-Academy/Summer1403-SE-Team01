@@ -1,4 +1,4 @@
-public class InvertedIndexMapper : IMapper
+public class InvertedIndexMapper : IInverIndexMapper
 {
     public Dictionary<string, List<Document>> Map(List<Document> documentList)
     {

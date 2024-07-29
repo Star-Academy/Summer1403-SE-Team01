@@ -1,4 +1,4 @@
 public interface IDocumentExtractor
 {
-    public Task<List<Document>> ExtractDocuments(List<string> filePaths, IProcessor textProcessor, IMultiReader multiTextFileReader);
+    public Task<List<Document>> Extract(List<string> filePaths);
 }

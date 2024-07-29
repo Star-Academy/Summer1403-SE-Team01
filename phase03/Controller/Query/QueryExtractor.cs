@@ -1,14 +1,14 @@
 //fill query.*
 public class QueryExtractor : IQueryExtractor
 {
-    private readonly IQueryProcessor _queryProcessor;
+    private readonly IQueryFormatter _queryProcessor;
 
-    public QueryExtractor(IQueryProcessor queryProcessor)
+    public QueryExtractor(IQueryFormatter queryProcessor)
     {
        _queryProcessor = queryProcessor;
     }
 
-    public void ExtractQuery(Query query, List<char> signs)
+    public void Extract(Query query, List<char> signs)
     {
         query.text = _queryProcessor.ToUpper(query.text);
         var splittedText = _queryProcessor.Split(query.text);
