@@ -4,75 +4,79 @@ using FullTextSearch.Core;
 using InvertedIndex.Controller.Document;
 using NSubstitute;
 using Xunit;
+using Assert = Xunit.Assert;
 
-namespace FullTextSearch.Test.DocumentTest;
-
-public class DocumentBuilderTest
+namespace FullTextSearch.Test.DocumentTest
 {
-    private readonly IDocumentFormatter _documentFormatter;
-    private readonly IDocumentBuilder _documentBuilder;
+    public class DocumentBuilderTest
+    {
+        private readonly IDocumentFormatter _documentFormatter;
+        private readonly IDocumentBuilder _documentBuilder;
 
-    public DocumentBuilderTest()
-    {
-        _documentFormatter = Substitute.For<IDocumentFormatter>();
-        _documentBuilder = new DocumentBuilder(_documentFormatter);
-    }
+        public DocumentBuilderTest()
+        {
+            _documentFormatter = Substitute.For<IDocumentFormatter>();
+            _documentBuilder = new DocumentBuilder(_documentFormatter);
+        }
 
-    [Test]
-    public void BuildNameTest()
-    {
-        // Arange
-        var name = "Ali";
+        [Fact]
+        public void BuildName_ShouldSetDocumentName()
+        {
+            // Arrange
+            var name = "Ali";
+            
+            // Act
+            _documentBuilder.BuildName(name);
+            
+            // Assert
+            Assert.Equal(name, _documentBuilder.GetDocument().Name);
+        }
         
-        // Act
-        _documentBuilder.BuildName(name);
+        [Fact]
+        public void BuildPath_ShouldSetDocumentPath()
+        {
+            // Arrange
+            var path = "/document";
+            
+            // Act
+            _documentBuilder.BuildPath(path);
+            
+            // Assert
+            Assert.Equal(path, _documentBuilder.GetDocument().Path);
+        }
         
-        // Assert
-        Xunit.Assert.Equal(name, _documentBuilder.GetDocument().Name);
+        [Fact]
+        public void BuildText_ShouldSetDocumentText()
+        {
+            // Arrange
+            var text = "Ali is someone!";
+            
+            // Act
+            _documentBuilder.BuildText(text);
+            
+            // Assert
+            Assert.Equal(text, _documentBuilder.GetDocument().Text);
+        }
+        
+        [Fact]
+        public void BuildWords_ShouldSetDocumentWords()
+        {
+            // Arrange
+            var sampleText = "hello world";
+            var upperText = sampleText.ToUpper();
+            var expectedWords = new List<string> { "HELLO", "WORLD" };
 
-    }
-    
-    [Test]
-    public void BuildPath()
-    {
-        // Arange
-        var path = "Ali";
-        
-        // Act
-        _documentBuilder.BuildPath(path);
-        
-        // Assert
-        Xunit.Assert.Equal(path, _documentBuilder.GetDocument().Path);
-    }
-    
-    [Test]
-    public void BuildTextTest()
-    {
-        // Arange
-        var text = "Ali is someone !";
-        
-        // Act
-        _documentBuilder.BuildText(text);
-        
-        // Assert
-        Xunit.Assert.Equal(text, _documentBuilder.GetDocument().Text);
-    }
-    
-    [Test]
-    public void BuildWordsTest()
-    {
-        // Arange
-        var text = "Ali is someone !";
-        Document document = new Document();
-        document.Text = text;
-        document.Words = _documentFormatter.Split(_documentFormatter.ToUpper(document.Text), " ");
-        
-        // Act
-        _documentBuilder.GetDocument().Text = text;
-        _documentBuilder.BuildWords();
-        
-        // Assert
-        Xunit.Assert.True(document.Words.SequenceEqual(_documentBuilder.GetDocument().Words));
-    }
+            _documentFormatter.ToUpper(sampleText).Returns(upperText);
+            _documentFormatter.Split(upperText, " ").Returns(expectedWords);
 
+            _documentBuilder.BuildText(sampleText);
+
+            // Act
+            _documentBuilder.BuildWords();
+            var document = _documentBuilder.GetDocument();
+
+            // Assert
+            Assert.Equal(expectedWords, document.Words);
+        }
+    }
 }

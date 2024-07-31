@@ -19,7 +19,7 @@ namespace FullTextSearch.Test.QueryTest
         }
 
         [Fact]
-        public void BuildTextTest()
+        public void BuildText_ShouldSetQueryText()
         {
             // Arrange
             var text = "Ali is someone !";
@@ -32,7 +32,7 @@ namespace FullTextSearch.Test.QueryTest
         }
 
         [Fact]
-        public void BuildWordsBySign_Should_OrganizeWordsCorrectly_ForPlusAndMinusSigns()
+        public void BuildWordsBySign_Should_OrganizeWordsCorrectly_ForSignedWords()
         {
             // Arrange
             var text = "+amir -reza";
