@@ -1,0 +1,60 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=07704915_002D32eb_002D4668_002D9f4d_002Dfad96eefedf0/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="BuildWordsTest #5" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::F90AFE67-456D-4A8D-90DF-86CF0BD1DD99::net8.0::FullTextSearch.Test.DocumentTest.DocumentBuilderTest.BuildWordsTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::F90AFE67-456D-4A8D-90DF-86CF0BD1DD99::net8.0::FullTextSearch.Test.InvertedIndexMapperTests.Map_ShouldReturnCorrectIvertedIndex&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::F90AFE67-456D-4A8D-90DF-86CF0BD1DD99::net8.0::FullTextSearch.Test.QueryTest.QueryBuilderTest.BuildTextTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::F90AFE67-456D-4A8D-90DF-86CF0BD1DD99::net8.0::FullTextSearch.Test.DocumentTest.DocumentBuilderTest.BuildTextTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::F90AFE67-456D-4A8D-90DF-86CF0BD1DD99::net8.0::FullTextSearch.Test.DocumentTest.DocumentBuilderTest.BuildNameTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::F90AFE67-456D-4A8D-90DF-86CF0BD1DD99::net8.0::FullTextSearch.Test.DocumentTest.DocumentBuilderTest.BuildPath&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::F90AFE67-456D-4A8D-90DF-86CF0BD1DD99::net8.0::FullTextSearch.Test.QueryTest.QueryBuilderTest.BuildWordsBySign&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::F90AFE67-456D-4A8D-90DF-86CF0BD1DD99::net8.0::FullTextSearch.Test.QueryTest.QueryBuilderTest.BuildWordsBySign_ShouldGroupWordsBySign&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=3a7ec9fe_002D0b95_002D42da_002D8177_002D76e464646170/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="BuildWordsBySign_ShouldGroupWordsBySign #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::F90AFE67-456D-4A8D-90DF-86CF0BD1DD99::net8.0::FullTextSearch.Test.QueryTest.QueryBuilderTest.BuildWordsBySign_ShouldGroupWordsBySign&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=4e74c837_002D7ee7_002D48ae_002Da2ba_002D81ebff0cdd98/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="BuildWordsTest #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::F90AFE67-456D-4A8D-90DF-86CF0BD1DD99::net8.0::FullTextSearch.Test.DocumentBuilderTest.BuildWordsTest&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=5bd59463_002D6462_002D44b2_002D99b3_002Dc410ec30a1e7/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="BuildWordsTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::F90AFE67-456D-4A8D-90DF-86CF0BD1DD99::net8.0::FullTextSearch.Test.DocumentBuilderTest.BuildWordsTest&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=7ba8b187_002D6cf6_002D479f_002D993f_002Dc2468bb87933/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="BuildWordsBySign_ShouldGroupWordsBySign #3" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::F90AFE67-456D-4A8D-90DF-86CF0BD1DD99::net8.0::FullTextSearch.Test.QueryTest.QueryBuilderTest.BuildWordsBySign_ShouldGroupWordsBySign&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=b2dac112_002D3efb_002D42bb_002Dbeec_002D9023e0ab0b3c/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="BuildWordsTest #3" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::F90AFE67-456D-4A8D-90DF-86CF0BD1DD99::net8.0::FullTextSearch.Test.DocumentTest.DocumentBuilderTest.BuildWordsTest&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=c5500814_002De89d_002D4438_002D8469_002Db89008fce342/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="BuildWordsBySign_ShouldGroupWordsBySign" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::F90AFE67-456D-4A8D-90DF-86CF0BD1DD99::net8.0::FullTextSearch.Test.QueryTest.QueryBuilderTest.BuildWordsBySign_ShouldGroupWordsBySign&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=f0174de1_002Dad6a_002D4afb_002Da8ad_002De3df552bce43/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="BuildWordsTest #4" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::F90AFE67-456D-4A8D-90DF-86CF0BD1DD99::net8.0::FullTextSearch.Test.DocumentTest.DocumentBuilderTest.BuildWordsTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::F90AFE67-456D-4A8D-90DF-86CF0BD1DD99::net8.0::FullTextSearch.Test.InvertedIndexMapperTests.Map_ShouldReturnCorrectIvertedIndex&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::F90AFE67-456D-4A8D-90DF-86CF0BD1DD99::net8.0::FullTextSearch.Test.QueryTest.QueryBuilderTest.BuildTextTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::F90AFE67-456D-4A8D-90DF-86CF0BD1DD99::net8.0::FullTextSearch.Test.DocumentTest.DocumentBuilderTest.BuildTextTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::F90AFE67-456D-4A8D-90DF-86CF0BD1DD99::net8.0::FullTextSearch.Test.DocumentTest.DocumentBuilderTest.BuildNameTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::F90AFE67-456D-4A8D-90DF-86CF0BD1DD99::net8.0::FullTextSearch.Test.DocumentTest.DocumentBuilderTest.BuildPath&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::F90AFE67-456D-4A8D-90DF-86CF0BD1DD99::net8.0::FullTextSearch.Test.QueryTest.QueryBuilderTest.BuildWordsBySign&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::F90AFE67-456D-4A8D-90DF-86CF0BD1DD99::net8.0::FullTextSearch.Test.QueryTest.QueryBuilderTest.BuildWordsBySign_ShouldGroupWordsBySign&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=f6bdf1ac_002D47af_002D4f26_002D85aa_002D99335d13e693/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Test1" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::F90AFE67-456D-4A8D-90DF-86CF0BD1DD99::net8.0::FullTextSearch.Test.DocumentBuilderTest.BuildWordsTest&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
