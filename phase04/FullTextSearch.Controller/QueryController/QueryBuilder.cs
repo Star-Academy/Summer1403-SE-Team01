@@ -27,7 +27,7 @@ public class QueryBuilder : IQueryBuilder
 
         foreach (var sign in signs)
         {
-            var texts = _queryFormatter.CollectBySign(splittedText, sign);
+            var texts = _queryFormatter.CollectBySign(splittedText, sign).ToList();
             splittedText = splittedText.Except(texts);
             _query.WordsBySign.Add(sign, _queryFormatter.RemovePrefix(texts));
         }
