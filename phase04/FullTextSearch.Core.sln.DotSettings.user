@@ -1,23 +1,6 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=bb444136_002Da189_002D4088_002Da62d_002D367d8e5ca578/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Split_ShouldReturnExpectedResults" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;xUnit::F90AFE67-456D-4A8D-90DF-86CF0BD1DD99::net8.0::FullTextSearch.Test.DocumentFormatterTest.Split_ShouldReturnExpectedResults&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::F90AFE67-456D-4A8D-90DF-86CF0BD1DD99::net8.0::InvertedIndex.Test.Query.QueryFormatterTest.ToUpperTest&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::F90AFE67-456D-4A8D-90DF-86CF0BD1DD99::net8.0::InvertedIndex.Test.Query.QueryFormatterTest.SplitTest&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::F90AFE67-456D-4A8D-90DF-86CF0BD1DD99::net8.0::InvertedIndex.Test.Query.QueryFormatterTest.RemoveExtraSpaceTest&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::F90AFE67-456D-4A8D-90DF-86CF0BD1DD99::net8.0::InvertedIndex.Test.Query.QueryFormatterTest.SeparatePrefixTest&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::F90AFE67-456D-4A8D-90DF-86CF0BD1DD99::net8.0::InvertedIndex.Test.Query.QueryFormatterTest.ExtractBySignTest&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::F90AFE67-456D-4A8D-90DF-86CF0BD1DD99::net8.0::FullTextSearch.Test.DocumentTest.DocumentBuilderTest.BuildWords_ShouldSetDocumentWords&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::F90AFE67-456D-4A8D-90DF-86CF0BD1DD99::net8.0::FullTextSearch.Test.DocumentTest.DocumentBuilderTest.BuildPath_ShouldSetDocumentPath&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::F90AFE67-456D-4A8D-90DF-86CF0BD1DD99::net8.0::FullTextSearch.Test.QueryTest.QueryBuilderTest.BuildText_ShouldSetQueryText&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::F90AFE67-456D-4A8D-90DF-86CF0BD1DD99::net8.0::FullTextSearch.Test.QueryTest.QueryBuilderTest.BuildWordsBySign_ShouldOrganizeWordsCorrectly_ForSignedWords&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::F90AFE67-456D-4A8D-90DF-86CF0BD1DD99::net8.0::FullTextSearch.Test.QueryTest.QueryBuilderTest.BuildWordsBySign_Should_OrganizeWordsCorrectly_ForSignedWords&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::F90AFE67-456D-4A8D-90DF-86CF0BD1DD99::net8.0::InvertedIndex.Test.Query.QueryFormatterTest.ToUpper_ShouldReturnUppercaseVersionOfText&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::F90AFE67-456D-4A8D-90DF-86CF0BD1DD99::net8.0::InvertedIndex.Test.Query.QueryFormatterTest.Split_ShouldReturnSplitTextArray&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::F90AFE67-456D-4A8D-90DF-86CF0BD1DD99::net8.0::InvertedIndex.Test.Query.QueryFormatterTest.CollectBySign_ShouldReturnWordsWithSpecifiedSign&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::F90AFE67-456D-4A8D-90DF-86CF0BD1DD99::net8.0::InvertedIndex.Test.Query.QueryFormatterTest.RemovePrefix_ShouldReturnWordsWithoutPrefix&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::F90AFE67-456D-4A8D-90DF-86CF0BD1DD99::net8.0::FullTextSearch.Test.DocumentTest.DocumentBuilderTest.BuildText_ShouldSetDocumentText&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
+  &lt;Project Location="C:\Users\amir\Desktop\phase02\Summer1403-SE-Team01\phase04\FullTextSearch.Test" Presentation="&amp;lt;FullTextSearch.Test&amp;gt;" /&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=cd3c73cd_002D4098_002D4edb_002Dbdc9_002D5214aa15d3ad/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="BuildWordsBySign_Should_OrganizeWordsCorrectly_ForSignedWords" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
