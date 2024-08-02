@@ -11,55 +11,55 @@ namespace FullTextSearch.Test.DocumentTest
     public class DocumentBuilderTest
     {
         private readonly IDocumentFormatter _documentFormatter;
-        private readonly IDocumentBuilder _documentBuilder;
+        private readonly IDocumentBuilder _sut;
 
         public DocumentBuilderTest()
         {
             _documentFormatter = Substitute.For<IDocumentFormatter>();
-            _documentBuilder = new DocumentBuilder(_documentFormatter);
+            _sut = new DocumentBuilder(_documentFormatter);
         }
 
         [Fact]
-        public void BuildName_ShouldSetDocumentName()
+        public void BuildName_ShouldSetDocumentName_WhenGivenName()
         {
             // Arrange
             var name = "Ali";
             
             // Act
-            _documentBuilder.BuildName(name);
+            _sut.BuildName(name);
             
             // Assert
-            Assert.Equal(name, _documentBuilder.GetDocument().Name);
+            Assert.Equal(name, _sut.GetDocument().Name);
         }
         
         [Fact]
-        public void BuildPath_ShouldSetDocumentPath()
+        public void BuildPath_ShouldSetDocumentPath_WhenGivenPath()
         {
             // Arrange
             var path = "/document";
             
             // Act
-            _documentBuilder.BuildPath(path);
+            _sut.BuildPath(path);
             
             // Assert
-            Assert.Equal(path, _documentBuilder.GetDocument().Path);
+            Assert.Equal(path, _sut.GetDocument().Path);
         }
         
         [Fact]
-        public void BuildText_ShouldSetDocumentText()
+        public void BuildText_ShouldSetDocumentText_WhenGivenText()
         {
             // Arrange
             var text = "Ali is someone!";
             
             // Act
-            _documentBuilder.BuildText(text);
+            _sut.BuildText(text);
             
             // Assert
-            Assert.Equal(text, _documentBuilder.GetDocument().Text);
+            Assert.Equal(text, _sut.GetDocument().Text);
         }
         
         [Fact]
-        public void BuildWords_ShouldSetDocumentWords()
+        public void BuildWords_ShouldSetDocumentWords_WhenTextIsBuilt()
         {
             // Arrange
             var sampleText = "hello world";
@@ -69,11 +69,11 @@ namespace FullTextSearch.Test.DocumentTest
             _documentFormatter.ToUpper(sampleText).Returns(upperText);
             _documentFormatter.Split(upperText, " ").Returns(expectedWords);
 
-            _documentBuilder.BuildText(sampleText);
+            _sut.BuildText(sampleText);
 
             // Act
-            _documentBuilder.BuildWords();
-            var document = _documentBuilder.GetDocument();
+            _sut.BuildWords();
+            var document = _sut.GetDocument();
 
             // Assert
             Assert.Equal(expectedWords, document.Words);

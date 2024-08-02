@@ -13,8 +13,9 @@ namespace FullTextSearch.Test
         {
             _sut = new InvertedIndexMapper();
         }
+
         [Fact]
-        public void Map_ShouldReturnCorrectInvertedIndex()
+        public void Map_ShouldReturnCorrectInvertedIndex_WhenGivenDocuments()
         {
             // Arrange
             Document document1 = new Document
@@ -51,10 +52,8 @@ namespace FullTextSearch.Test
                 { "mohammad", new List<Document> { document2, document3 } }
             };
 
-            var mapper = new InvertedIndexMapper();
-
             // Act
-            var result = mapper.Map(documents);
+            var result = _sut.Map(documents);
 
             // Assert
             Assert.NotNull(result);

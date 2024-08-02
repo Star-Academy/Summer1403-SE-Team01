@@ -19,7 +19,7 @@ namespace FullTextSearch.Test.QueryTest
         }
 
         [Fact]
-        public void BuildText_ShouldSetQueryText()
+        public void BuildText_ShouldSetQueryText_WhenGivenText()
         {
             // Arrange
             var text = "Ali is someone !";
@@ -32,7 +32,7 @@ namespace FullTextSearch.Test.QueryTest
         }
 
         [Fact]
-        public void BuildWordsBySign_Should_OrganizeWordsCorrectly_ForSignedWords()
+        public void BuildWordsBySign_ShouldOrganizeWordsCorrectly_WhenGivenSignedWords()
         {
             // Arrange
             var text = "+amir -reza";
@@ -68,7 +68,6 @@ namespace FullTextSearch.Test.QueryTest
             // Assert
             Assert.Equal(new List<string> { "AMIR" }, query.WordsBySign['+']);
             Assert.Equal(new List<string> { "REZA" }, query.WordsBySign['-']);
-            
         }
     }
 }

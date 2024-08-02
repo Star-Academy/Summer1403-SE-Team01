@@ -6,11 +6,11 @@ public class MinusSearcher : ISearcher
 {
     public char Sign {get; init;} = '-';
 
-    public IEnumerable<Document> Search(Query query, Dictionary<string, IEnumerable<Document>> dictionary)
+    public IEnumerable<Document> Search(Query query, Dictionary<string, IEnumerable<Document>> invertedIndex)
     {
         var documents = query.WordsBySign[Sign]
-            .Where(s => dictionary.ContainsKey(s))
-            .SelectMany(s => dictionary[s])
+            .Where(s => invertedIndex.ContainsKey(s))
+            .SelectMany(s => invertedIndex[s])
             .Distinct()
             .ToList();
         

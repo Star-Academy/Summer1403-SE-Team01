@@ -17,7 +17,7 @@ namespace FullTextSearch.Test
         [InlineData("HEY EVERYBODY! WHATSAPP", "Hey Everybody! Whatsapp")]
         [InlineData("ALI  REZA", "ALI  REZA")]
         [InlineData("ALI REZA", "ali reza")]
-        public void ToUpper_ShouldConvertToUpperCase(string expected, string text)
+        public void ToUpper_ShouldConvertTextToUpperCase_WhenGivenText(string expected, string text)
         {
             // Act
             var result = _sut.ToUpper(text);
@@ -29,7 +29,7 @@ namespace FullTextSearch.Test
         [Xunit.Theory]
         [InlineData("This is a test.", " ", new[] { "This", "is", "a", "test." })]
         [InlineData("amir!", " ", new[] { "amir!" })]
-        public void Split_ShouldReturnExpectedResults(string queryText, string regex, string[] expected)
+        public void Split_ShouldReturnExpectedWords_WhenGivenTextAndDelimiter(string queryText, string regex, string[] expected)
         {
             // Act
             IEnumerable<string> result = _sut.Split(queryText, regex);
