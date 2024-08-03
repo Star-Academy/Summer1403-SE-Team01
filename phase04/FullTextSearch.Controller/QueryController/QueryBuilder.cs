@@ -11,7 +11,7 @@ public class QueryBuilder : IQueryBuilder
     public QueryBuilder(IQueryFormatter queryFormatter)
     {
         _query = new Query();
-        _queryFormatter = queryFormatter;
+        _queryFormatter = queryFormatter ?? throw new ArgumentNullException(nameof(queryFormatter));
     }
 
     public void BuildText(string text)
@@ -21,7 +21,7 @@ public class QueryBuilder : IQueryBuilder
 
     public void BuildWordsBySign(IEnumerable<char> signs)
     {
-        var splittedText = _queryFormatter.Split(_queryFormatter.ToUpper(_query.Text), " "); // [^A-Z]+
+        var splittedText = _queryFormatter.Split(_queryFormatter.ToUpper(_query.Text), " ");
 
         foreach (var sign in signs)
         {

@@ -11,8 +11,8 @@ public class DocumentBuilder : IDocumentBuilder
 
     public DocumentBuilder(IDocumentFormatter documentFormatter)
     {
+        _documentFormatter = documentFormatter ?? throw new ArgumentNullException(nameof(documentFormatter));
         _document = new Document();
-        _documentFormatter = documentFormatter;
     }
     
     public void BuildName(string name)

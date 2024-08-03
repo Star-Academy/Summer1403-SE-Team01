@@ -1,43 +1,46 @@
 using FullTextSearch.Controller.ResultController;
 using FullTextSearch.Controller.ResultController.Abstraction;
 using FullTextSearch.Core;
+using FullTextSearch.Test.Data;
 using Xunit;
 using Assert = Xunit.Assert;
 
-namespace FullTextSearch.Test.ControllerTest.ResultControllerTest;
-
-public class MinusFilterTest
+namespace FullTextSearch.Test.ControllerTest.ResultControllerTest
 {
-    private readonly IFilter _sut;
-
-    public MinusFilterTest()
+    public class MinusFilterTest
     {
-        _sut = new MinusFilter();
-    }
+        private readonly IFilter _sut;
 
-    [Fact]
-    public void Filter_ShouldReturnFilteredDocuments_WhenDocumentsContainMinusWords()
-    {
-        // Arrange
-        var d1 = new Document();
-        var d2 = new Document();
-        var d3 = new Document();
-        var d4 = new Document();
-        var d5 = new Document();
-        
-        IEnumerable<Document> documents = new List<Document>() {d1, d2, d3};
-        Dictionary<char, IEnumerable<Document>> documentsBySign = new Dictionary<char, IEnumerable<Document>>()
+        public MinusFilterTest()
         {
-            {'+', new List<Document>(){d1, d2}},
-            {'-', new List<Document>(){d1, d2, d5}},
-            {' ', new List<Document>(){d5, d4}}
-        };
-        var expected = documents.Except(documentsBySign['-']);
-        
-        // Act
-        var actual = _sut.Filter(documents, documentsBySign);
+            _sut = new MinusFilter();
+        }
 
-        // Assert
-        Assert.True(actual.SequenceEqual(expected));
+        [Fact]
+        public void Filter_ShouldReturnFilteredDocuments_WhenDocumentsContainMinusWords()
+        {
+            // Arrange
+            var documentList = DataSample.GetDocuments();
+
+            Document document1 = documentList[0];
+            Document document2 = documentList[1];
+            Document document3 = documentList[2];
+
+            IEnumerable<Document> documents = new List<Document> { document1, document2, document3 };
+            
+            var documentsBySign = new Dictionary<char, IEnumerable<Document>>
+            {
+                { '+', new List<Document> { document1, document2 } },
+                { '-', new List<Document> { document1, document2, document3 } },
+                { ' ', new List<Document> { document3 } }
+            };
+            var expected = documents.Except(documentsBySign['-']);
+
+            // Act
+            var actual = _sut.Filter(documents, documentsBySign);
+
+            // Assert
+            Assert.True(actual.SequenceEqual(expected));
+        }
     }
 }

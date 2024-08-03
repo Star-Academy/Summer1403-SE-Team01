@@ -4,8 +4,10 @@ using FullTextSearch.Controller.InvertedIndexController;
 using FullTextSearch.Controller.Read.Abstraction;
 using FullTextSearch.Core;
 using FullTextSearch.Service.InitializeService;
+using FullTextSearch.Test.Data;
 using InvertedIndex.Abstraction.Read;
 using NSubstitute;
+using Xunit;
 using Assert = Xunit.Assert;
 
 namespace FullTextSearch.Test.ServiceTest.InitializeServiceTest;
@@ -29,74 +31,42 @@ public class InitializeServiceTest
         _sut = new InitializeService(_fileReader, _documentDirector, _invertedIndexMapper, _directory, _path);
     }
 
-    [Test]
+    [Fact]
     public async Task Initialize_ShouldInitializeDocumentsFromFilesInGivenDirectory_WhenDirectoryExists()
     {
         // Arrange
         var directoryPath = "./Resources/EnglishData";
-        List<Document> documents = new List<Document>();
-        var paths = new List<string?>() {"./Resources/EnglishData/57110", "./Resources/EnglishData/58043", "./Resources/EnglishData/558044"};
-        var names = new List<string?>() {"57110", "58043", "558044"};
-        var texts = new List<string?>() {"", "", ""};
-        DocumentFormatter documentFormatter = new DocumentFormatter();
-        var documentBuilders = new List<DocumentBuilder>() {new DocumentBuilder(documentFormatter), new DocumentBuilder(documentFormatter), new DocumentBuilder(documentFormatter)};
-        
+        var paths = new List<string> { "./Resources/EnglishData/57110", "./Resources/EnglishData/58043", "./Resources/EnglishData/558044" };
+        var names = new List<string> { "57110", "58043", "558044" };
+        var texts = new List<string> { "", "", "" };
+        var documentFormatter = new DocumentFormatter();
+        var documentBuilders = new List<DocumentBuilder>();
 
         _directory.GetFiles(directoryPath).Returns(paths);
 
-        _path.GetFileName(paths[0]).Returns(names[0]);
-        _path.GetFileName(paths[1]).Returns(names[1]);
-        _path.GetFileName(paths[2]).Returns(names[2]);
-
-        _fileReader.ReadAsync(paths[0]).Returns(texts[0]);
-        _fileReader.ReadAsync(paths[1]).Returns(texts[1]);
-        _fileReader.ReadAsync(paths[2]).Returns(texts[2]);
-
-        _documentDirector.Construct(names[0], paths[0], texts[0], documentBuilders[0]);
-        _documentDirector.Construct(names[0], paths[0], texts[0], documentBuilders[1]);
-        _documentDirector.Construct(names[0], paths[0], texts[0], documentBuilders[2]);
-        
-        documents.Add(documentBuilders[0].GetDocument());
-        documents.Add(documentBuilders[1].GetDocument());
-        documents.Add(documentBuilders[2].GetDocument());
-
-        Document document1 = new Document();
-        document1.Name = "Doc1";
-        document1.Path = "./ResourcesTest/Doc1";
-        document1.Text = "reza ali mohammad hello";
-        document1.Words = new List<string> {"cat", "reza"};
-            
-            
-        Document document2 = new Document();
-        document2.Name = "Doc2";
-        document2.Path = "./ResourcesTest/Doc2";
-        document2.Text = "reza ali mohammad hello";
-        document2.Words = new List<string> {"cat", "reza", "demand"};
-            
-            
-        Document document3 = new Document();
-        document3.Name = "Doc3";
-        document3.Path = "./ResourcesTest/Doc3";
-        document3.Text = "reza ali mohammad hello";
-        document3.Words = new List<string> {"cat", "ali"};
-
-        var expected = new Dictionary<string, IEnumerable<Document>>
+        for (int i = 0; i < paths.Count; i++)
         {
-            { "cat", new List<Document> { document1, document2, document3} },
-            { "reza", new List<Document> {document1, document2} },
-            { "demand", new List<Document> { document2 } }
-        };
+            _path.GetFileName(paths[i]).Returns(names[i]);
+            _fileReader.ReadAsync(paths[i]).Returns(texts[i]);
+            var documentBuilder = new DocumentBuilder(documentFormatter);
+            _documentDirector.Construct(names[i], paths[i], texts[i], documentBuilder);
+            documentBuilders.Add(documentBuilder);
+        }
+
+        var documents = documentBuilders.Select(builder => builder.GetDocument()).ToList();
+        var documentList = DataSample.GetDocuments();
+        var expected = DataSample.GetInvertedIndexMap(documentList[0], documentList[1], documentList[2]);
 
         _invertedIndexMapper.Map(documents).Returns(expected);
-        
+
         // Act
         var result = await _sut.Initialize(directoryPath);
-        
+
         // Assert
         Assert.Equal(result.Keys.Count, expected.Keys.Count);
         foreach (var entry in expected)
         {
             Assert.True(entry.Value.SequenceEqual(result[entry.Key]));
-        }    
+        }
     }
 }

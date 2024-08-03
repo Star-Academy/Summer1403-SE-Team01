@@ -14,9 +14,5 @@ public class DocumentFormatter : IDocumentFormatter{
     {
         return Regex.Split(queryText, regex);
     }
-
-    public IEnumerable<string> RemoveStopWords()
-    {
-        throw new NotImplementedException();
-    }
+    
 }

@@ -1,5 +1,6 @@
 ﻿using FullTextSearch.Controller.SearchController;
 using FullTextSearch.Core;
+using FullTextSearch.Test.Data;
 using Xunit;
 using Assert = Xunit.Assert;
 
@@ -18,37 +19,15 @@ public class UniversalSearchTest
     public void GetUniversal_ShouldReturnAllDocuments_WhenGivenInvertedIndex()
     {
         // Arrange
-        Document document1 = new Document
-        {
-            Name = "Doc1",
-            Path = "./ResourcesTest/Doc1",
-            Text = "reza ali mohammad hello",
-            Words = new List<string> { "reza", "ali", "hello" }
-        };
-                
-        Document document2 = new Document
-        {
-            Name = "Doc2",
-            Path = "./ResourcesTest/Doc2",
-            Text = "reza ali mohammad hello",
-            Words = new List<string> { "reza", "mohammad", "hello" }
-        };
-                
-        Document document3 = new Document
-        {
-            Name = "Doc3",
-            Path = "./ResourcesTest/Doc3",
-            Text = "reza ali mohammad hello",
-            Words = new List<string> { "reza", "ali", "mohammad" }
-        };
+        var documentList = DataSample.GetDocuments();
+
+        Document document1 = documentList[0];
+        Document document2 = documentList[1];
+        Document document3 = documentList[2];
             
-        var invertedIndexMap = new Dictionary<string, IEnumerable<Document>>
-        {
-            { "reza", new List<Document> { document1, document2, document3 } },
-            { "ali", new List<Document> { document1, document3 } },
-            { "hello", new List<Document> { document1, document2 } },
-            { "mohammad", new List<Document> { document2, document3 } }
-        };
+        var invertedIndexMap = DataSample.GetInvertedIndexMap(document1, 
+            document2, document3);
+
             
         var expectedDocuments = new List<Document> { document1, document2, document3 };
 

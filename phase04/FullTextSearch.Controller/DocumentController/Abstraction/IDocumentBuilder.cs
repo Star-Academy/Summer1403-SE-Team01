@@ -5,9 +5,9 @@ namespace FullTextSearch.Controller.DocumentController.Abstraction;
 public interface IDocumentBuilder
 {
 
-    public void BuildName(string name);
-    public void BuildPath(string path);
-    public void BuildText(string text);
-    public void BuildWords();
-    public Document GetDocument();
+    void BuildName(string name);
+    void BuildPath(string path);
+    void BuildText(string text);
+    void BuildWords();
+    Document GetDocument();
 }
