@@ -1,16 +1,20 @@
 using FullTextSearch.Controller.SearchController;
 using FullTextSearch.Core;
+using Xunit;
 using Assert = Xunit.Assert;
 
 namespace FullTextSearch.Test.ControllerTest.SearchControllerTest;
 
 public class NoSignedSearcherTest
 {
-    private readonly ISearcher _sut = new NoSignedSearcher();
-    
-    
-    [Test]
-    public void Search_ShouldReturnDocumentsContainingNoSignedWords()
+    private readonly ISearcher _sut;
+
+    public NoSignedSearcherTest()
+    {
+        _sut = new NoSignedSearcher();
+    }
+    [Fact]
+    public void Search_ShouldReturnDocumentsContainingNoSignedWords_WhenGivenQueryAndInvertedIndex()
     {
         // Arrange
         Query query = new Query();

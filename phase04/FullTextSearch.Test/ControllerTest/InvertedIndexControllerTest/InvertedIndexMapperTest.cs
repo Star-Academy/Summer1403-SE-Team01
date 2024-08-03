@@ -1,5 +1,6 @@
 using FullTextSearch.Controller.InvertedIndexController;
 using FullTextSearch.Core;
+using Xunit;
 using Assert = Xunit.Assert;
 
 namespace FullTextSearch.Test.ControllerTest.InvertedIndexControllerTest
@@ -13,8 +14,8 @@ namespace FullTextSearch.Test.ControllerTest.InvertedIndexControllerTest
             _sut = new InvertedIndexMapper();
         }
 
-        [Test]
-        public void Map_ShouldReturnCorrectInvertedIndex()
+        [Fact]
+        public void Map_ShouldReturnCorrectInvertedIndex_WhenGivenDocuments()
         {
             // Arrange
             Document document1 = new Document();

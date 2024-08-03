@@ -1,16 +1,20 @@
 using FullTextSearch.Controller.SearchController;
 using FullTextSearch.Core;
+using Xunit;
 using Assert = Xunit.Assert;
 
 namespace FullTextSearch.Test.ControllerTest.SearchControllerTest;
 
 public class PlusSearcherTest
 {
-    private readonly ISearcher _sut = new PlusSearcher();
-    
-    
-    [Test]
-    public void Search_ShouldReturnDocumentsContainingPlusWords()
+    private readonly ISearcher _sut;
+
+    public PlusSearcherTest()
+    {
+        _sut = new PlusSearcher();
+    }
+    [Fact]
+    public void Search_ShouldReturnDocumentsContainingPlusWords_WhenGivenQueryAndInvertedIndex()
     {
         // Arrange
         Query query = new Query();

@@ -1,74 +1,72 @@
 using FullTextSearch.Controller.QueryController;
 using FullTextSearch.Controller.QueryController.Abstraction;
-using FullTextSearch.Core;
 using NSubstitute;
 using Xunit;
 using Assert = Xunit.Assert;
 
-namespace FullTextSearch.Test.ControllerTest.QueryControllerTest;
-
-public class QueryBuilderTest
+namespace FullTextSearch.Test.QueryTest
 {
-    private readonly IQueryFormatter _queryFormatter;
-    private readonly IQueryBuilder _sut;
-
-    public QueryBuilderTest()
+    public class QueryBuilderTest
     {
-        _queryFormatter = Substitute.For<IQueryFormatter>();
-        _sut = new QueryBuilder(_queryFormatter);
-    }
+        private readonly IQueryFormatter _queryFormatter;
+        private readonly IQueryBuilder _sut;
 
-    [Fact]
-    public void BuildText_ShouldSetText()
-    {
-        // Arrange
-        var text = "Ali is someone !";
-        var expected = text;
-        
-        // Act
-        _sut.BuildText(text);
-        var actual = _sut.GetQuery().Text;
-
-        // Assert
-        Assert.Equal(expected, actual);
-    }
-
-    [Fact] public void BuildWordsBySign_ShouldFillWordsBySign()
-    {
-        // Arrange
-        string text = "cat +reza -demand", uppered = "CAT +REZA -DEMAND";
-        var signs = new[] { '+', '-' };
-        var split = new List<string> { "CAT", "+REZA", "-DEMAND" };
-        var plus = new List<string> { "+REZA" };
-        var minus = new List<string> { "-DEMAND" };
-        var unsigned = new List<string> { "CAT" };
-        var removedPlus = new List<string> { "REZA" };
-        var removedMinus = new List<string> { "DEMAND" };
-        
-        _queryFormatter.ToUpper(text).Returns(uppered);
-        _queryFormatter.Split(uppered, " ").Returns(split);
-        
-        _queryFormatter.CollectBySign(split, '+').Returns(plus);
-        _queryFormatter.CollectBySign(split, '-').Returns(minus);
-        _queryFormatter.CollectBySign(split, ' ').Returns(unsigned);
-
-        _queryFormatter.RemovePrefix(plus).Returns(removedPlus);
-        _queryFormatter.RemovePrefix(minus).Returns(removedMinus);
-
-        Query query = new Query();
-        query.Text = text;
-        query.WordsBySign = new Dictionary<char, IEnumerable<string>>()
+        public QueryBuilderTest()
         {
-            {'+', removedPlus},
-            {'-', removedMinus},
-            {' ', unsigned}
-        };
-        
-        // Act
-        _sut.BuildText(text);
-        _sut.BuildWordsBySign(signs);
+            _queryFormatter = Substitute.For<IQueryFormatter>();
+            _sut = new QueryBuilder(_queryFormatter);
+        }
 
-        // Assert
-        Assert.True(query.Equals(_sut.GetQuery()));
+        [Fact]
+        public void BuildText_ShouldSetQueryText_WhenGivenText()
+        {
+            // Arrange
+            var text = "Ali is someone !";
+
+            // Act
+            _sut.BuildText(text);
+
+            // Assert
+            Assert.Equal(text, _sut.GetQuery().Text);
+        }
+
+        [Fact]
+        public void BuildWordsBySign_ShouldOrganizeWordsCorrectly_WhenGivenSignedWords()
+        {
+            // Arrange
+            var text = "+amir -reza";
+            var signs = new List<char> { '+', '-' };
+
+            _queryFormatter.ToUpper(text).Returns("+AMIR -REZA");
+            _queryFormatter.Split("+AMIR -REZA", " ").Returns(new List<string> { "+AMIR", "-REZA" });
+
+            _queryFormatter.CollectBySign(
+                Arg.Is<IEnumerable<string>>(x => x.SequenceEqual(new List<string> { "+AMIR", "-REZA" })), 
+                '+'
+            ).Returns(new List<string> { "+AMIR" });
+
+            _queryFormatter.CollectBySign(
+                Arg.Is<IEnumerable<string>>(x => x.SequenceEqual(new List<string> { "-REZA" })), 
+                '-'
+            ).Returns(new List<string> { "-REZA" });
+
+            _queryFormatter.RemovePrefix(
+                Arg.Is<IEnumerable<string>>(x => x.SequenceEqual(new List<string> { "+AMIR" }))
+            ).Returns(new List<string> { "AMIR" });
+
+            _queryFormatter.RemovePrefix(
+                Arg.Is<IEnumerable<string>>(x => x.SequenceEqual(new List<string> { "-REZA" }))
+            ).Returns(new List<string> { "REZA" });
+
+            _sut.BuildText(text);
+
+            // Act
+            _sut.BuildWordsBySign(signs);
+            var query = _sut.GetQuery();
+
+            // Assert
+            Assert.Equal(new List<string> { "AMIR" }, query.WordsBySign['+']);
+            Assert.Equal(new List<string> { "REZA" }, query.WordsBySign['-']);
+        }
     }
 }

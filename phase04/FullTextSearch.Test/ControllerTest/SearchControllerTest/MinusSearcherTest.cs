@@ -1,15 +1,20 @@
 using FullTextSearch.Controller.SearchController;
 using FullTextSearch.Core;
+using Xunit;
 using Assert = Xunit.Assert;
 
 namespace FullTextSearch.Test.ControllerTest.SearchControllerTest;
 
 public class MinusSearcherTest
 {
-    private readonly ISearcher _sut = new MinusSearcher();
+    private readonly ISearcher _sut;
 
-    [Test]
-    public void Search_ShouldReturnDocumentsContainingMinusWords()
+    public MinusSearcherTest()
+    {
+        _sut = new MinusSearcher();
+    }
+    [Fact]
+    public void Search_ShouldReturnDocumentsExcludingMinusWords_WhenGivenQueryAndInvertedIndex()
     {
         // Arrange
         Query query = new Query();

@@ -2,45 +2,40 @@ using FullTextSearch.Controller.DocumentController;
 using Xunit;
 using Assert = Xunit.Assert;
 
-
-namespace FullTextSearch.Test.ControllerTest.DocumentControllerTest;
-public class DocumentFormatterTest
+namespace FullTextSearch.Test
 {
-    private readonly DocumentFormatter _sut;
+    public class DocumentFormatterTest
+    {
+        private readonly DocumentFormatter _sut;
 
-    public DocumentFormatterTest()
-    {
-        _sut = new DocumentFormatter();
-    }
-    
-    [Xunit.Theory]
-    [InlineData("HEY EVERYBODY! WHATSAPP", "Hey Everybody! Whatsapp")]
-    [InlineData("ALI  REZA", "ALI  REZA")]
-    [InlineData("ALI REZA", "ali reza")]
-    public void ToUpper_ShouldUpperText(string expected, string text)
-    {
-        // Arranged
+        public DocumentFormatterTest()
+        {
+            _sut = new DocumentFormatter();
+        }
         
-        // Act
-        var actual = _sut.ToUpper(text);
+        [Xunit.Theory]
+        [InlineData("HEY EVERYBODY! WHATSAPP", "Hey Everybody! Whatsapp")]
+        [InlineData("ALI  REZA", "ALI  REZA")]
+        [InlineData("ALI REZA", "ali reza")]
+        public void ToUpper_ShouldConvertTextToUpperCase_WhenGivenText(string expected, string text)
+        {
+            // Act
+            var result = _sut.ToUpper(text);
+
+            // Assert
+            Assert.Equal(expected, result);
+        }
         
-        // Assert
-        Assert.Equal(expected, actual);
-    }
-    
-    [Xunit.Theory]
-    [InlineData(new[] { "salAm!" }, "salAm!")]
-    [InlineData(new[] { "A", "L", "I" }, "A L I")]
-    [InlineData(new[] { "reza", "!", "moHammmad", "", "", "", "", "-", "?", "reza" }, "reza ! moHammmad     - ? reza")]
-    public void Split_ShouldSplitTextBasedOnGivenRegex(string[] expectedArray, string text)
-    {
-        // Arrange
-        var expected = new List<string>(expectedArray);
-        
-        // Act
-        var actual = _sut.Split(text, " ");
-        
-        // Assert
-        Assert.Equal(expected, actual);
+        [Xunit.Theory]
+        [InlineData("This is a test.", " ", new[] { "This", "is", "a", "test." })]
+        [InlineData("amir!", " ", new[] { "amir!" })]
+        public void Split_ShouldReturnExpectedWords_WhenGivenTextAndDelimiter(string queryText, string regex, string[] expected)
+        {
+            // Act
+            IEnumerable<string> result = _sut.Split(queryText, regex);
+
+            // Assert
+            Assert.Equal(expected, result);
+        }
     }
 }

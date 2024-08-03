@@ -1,16 +1,22 @@
 using FullTextSearch.Controller.ResultController;
 using FullTextSearch.Controller.ResultController.Abstraction;
 using FullTextSearch.Core;
+using Xunit;
 using Assert = Xunit.Assert;
 
 namespace FullTextSearch.Test.ControllerTest.ResultControllerTest;
 
 public class MinusFilterTest
 {
-    private readonly IFilter _sut = new MinusFilter();
+    private readonly IFilter _sut;
 
-    [Test]
-    public void Filter_ShouldReturnFilteredDocumentsContainingMinusWordsFromResultDocuments()
+    public MinusFilterTest()
+    {
+        _sut = new MinusFilter();
+    }
+
+    [Fact]
+    public void Filter_ShouldReturnFilteredDocuments_WhenDocumentsContainMinusWords()
     {
         // Arrange
         var d1 = new Document();

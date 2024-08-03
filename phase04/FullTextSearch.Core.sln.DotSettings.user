@@ -1,12 +1,13 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:String x:Key="/Default/Environment/Highlighting/HighlightingSourceSnapshotLocation/@EntryValue">C:\Users\Hana.N\AppData\Local\JetBrains\Rider2021.3\resharper-host\temp\Rider\vAny\CoverageData\_FullTextSearch.Core.1172230801\Snapshot\snapshot.utdcvr</s:String>
+	<s:String x:Key="/Default/Environment/Highlighting/HighlightingSourceSnapshotLocation/@EntryValue">C:\Users\amir\AppData\Local\JetBrains\Rider2024.1\resharper-host\temp\Rider\vAny\CoverageData\_FullTextSearch.Core.1529091627\Snapshot\snapshot.utdcvr</s:String>
+	
 	
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=0dc70f72_002Ddebb_002D43b0_002Dbbbc_002D5f0d7519d5d1/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="GetUniversal_WithEmptyIndex_Returns_EmptyList" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;Project Location="E:\programming c#\phase04_02\Summer1403-SE-Team01\phase04\FullTextSearch.Test" Presentation="&amp;lt;FullTextSearch.Test&amp;gt;" /&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=bb444136_002Da189_002D4088_002Da62d_002D367d8e5ca578/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Split_ShouldReturnExpectedResults" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=bb444136_002Da189_002D4088_002Da62d_002D367d8e5ca578/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Split_ShouldReturnExpectedResults" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;Project Location="E:\programming c#\phase04_02\Summer1403-SE-Team01\phase04\FullTextSearch.Test" Presentation="&amp;lt;FullTextSearch.Test&amp;gt;" /&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=cd3c73cd_002D4098_002D4edb_002Dbdc9_002D5214aa15d3ad/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="BuildWordsBySign_Should_OrganizeWordsCorrectly_ForSignedWords" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;Project Location="E:\programming c#\phase04_02\Summer1403-SE-Team01\phase04\FullTextSearch.Test" Presentation="&amp;lt;FullTextSearch.Test&amp;gt;" /&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=cd3c73cd_002D4098_002D4edb_002Dbdc9_002D5214aa15d3ad/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="BuildWordsBySign_Should_OrganizeWordsCorrectly_ForSignedWords" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;Project Location="C:\Users\amir\Desktop\nv\Summer1403-SE-Team01\phase04\FullTextSearch.Test" Presentation="&amp;lt;FullTextSearch.Test&amp;gt;" /&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

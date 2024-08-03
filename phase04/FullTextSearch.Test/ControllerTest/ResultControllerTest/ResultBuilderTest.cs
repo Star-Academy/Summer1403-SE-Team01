@@ -4,6 +4,7 @@ using FullTextSearch.Controller.SearchController;
 using FullTextSearch.Controller.SearchController.Abstraction;
 using FullTextSearch.Core;
 using NSubstitute;
+using Xunit;
 using Assert = Xunit.Assert;
 
 namespace FullTextSearch.Test.ControllerTest.ResultControllerTest;
@@ -21,8 +22,8 @@ public class ResultBuilderTest
         _sut = new ResultBuilder(_filterDriver, _searcherDriver);
     }
 
-    [Test]
-    public void BuildDocumentsBySign_ShouldFillDocumentsBySign()
+    [Fact]
+    public void BuildDocumentsBySign_ShouldFillDocumentsBySign_WhenGivenSearchersAndQuery()
     {
         // Arrange
         IEnumerable<ISearcher> searchers = new List<ISearcher>() {new MinusSearcher(), new PlusSearcher(), new NoSignedSearcher()};

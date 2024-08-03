@@ -1,16 +1,21 @@
 using FullTextSearch.Controller.ResultController;
 using FullTextSearch.Controller.ResultController.Abstraction;
 using FullTextSearch.Core;
+using Xunit;
 using Assert = Xunit.Assert;
 
 namespace FullTextSearch.Test.ControllerTest.ResultControllerTest;
 
 public class PlusFilterTest
 {
-    private readonly IFilter _sut = new PlusFilter();
+    private readonly IFilter _sut;
 
-    [Test]
-    public void Filter_ShouldReturnFilteredDocumentsContainingPlusWordsFromResultDocuments()
+    public PlusFilterTest()
+    {
+        _sut = new PlusFilter();
+    }
+    [Fact]
+    public void Filter_ShouldReturnDocumentsContainingPlusWords_WhenFilteringWithPlusSign()
     {
         // Arrange
         var d1 = new Document();

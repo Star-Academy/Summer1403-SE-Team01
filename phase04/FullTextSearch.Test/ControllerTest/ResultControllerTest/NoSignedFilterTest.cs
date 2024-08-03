@@ -1,16 +1,21 @@
 using FullTextSearch.Controller.ResultController;
 using FullTextSearch.Controller.ResultController.Abstraction;
 using FullTextSearch.Core;
+using Xunit;
 using Assert = Xunit.Assert;
 
 namespace FullTextSearch.Test.ControllerTest.ResultControllerTest;
 
 public class NoSignedFilterTest
 {
-    private readonly IFilter _sut = new NoSignedFilter();
+    private readonly IFilter _sut;
 
-    [Test]
-    public void Filter_ShouldReturnFilteredDocumentsContainingNoSignedWordsFromResultDocuments()
+    public NoSignedFilterTest()
+    {
+        _sut = new NoSignedFilter();
+    }
+    [Fact]
+    public void Filter_ShouldReturnDocumentsWithoutSignedWords_WhenDocumentsContainNoSignedWords()
     {
         // Arrange
         var d1 = new Document();
