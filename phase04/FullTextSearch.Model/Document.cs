@@ -2,14 +2,6 @@ namespace FullTextSearch.Core;
 
 public class Document
 {
-    public Document()
-    {
-        //Text = text;
-        //Name = name;
-        //Path = path;
-       // Text = text;
-       // Words = new List<string>(words);
-    }
     public string Name { get; set; }
     public string Path { get; set; }
     public string Text { get; set; }
@@ -23,7 +15,7 @@ public class Document
     public override bool Equals(object obj) 
     {
         if (ReferenceEquals(null, obj)) return false;
-        if (ReferenceEquals(this, obj)) return true;
+        //if (ReferenceEquals(this, obj)) return true;
         if (obj.GetType() != this.GetType()) return false;
         return Equals((Document) obj);
     }
