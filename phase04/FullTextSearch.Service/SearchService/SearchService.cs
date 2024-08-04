@@ -21,11 +21,9 @@ public class SearchService : ISearchService
 
     public Result Search(string input, Dictionary<string, IEnumerable<Document>> invertedIndex)
     {
-        //QueryBuilder queryBuilder = new QueryBuilder(new QueryFormatter());
         new QueryDirector().Construct(input, new List<char>(){'+', '-'}, _queryBuilder);
         var query = _queryBuilder.GetQuery();
-
-        //ResultBuilder resultBuilder = new ResultBuilder(new FilterDriver(), new SearcherDriver());
+        
         new ResultDirector().Construct(_resultBuilder, query, invertedIndex);
         var result = _resultBuilder.GetResult();
         
