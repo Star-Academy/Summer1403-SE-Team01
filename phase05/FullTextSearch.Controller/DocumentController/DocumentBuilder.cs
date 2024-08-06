@@ -1,3 +1,4 @@
+using System.Text.RegularExpressions;
 using FullTextSearch.Controller.DocumentController.Abstraction;
 using FullTextSearch.Core;
 using InvertedIndex.Controller.Document;
@@ -30,6 +31,10 @@ public class DocumentBuilder : IDocumentBuilder
         _document.Text = text;
     }
 
+    public void DeleteExtraSpace()
+    {
+        _document.Text = Regex.Replace( _document.Text, @"\s+", " ");
+    }
     public void BuildWords()
     {
         _document.Words = _documentFormatter.Split(_documentFormatter.ToUpper(_document.Text), " ");

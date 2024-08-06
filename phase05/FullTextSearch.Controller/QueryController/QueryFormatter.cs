@@ -22,6 +22,17 @@ public class QueryFormatter : IQueryFormatter
 
     public IEnumerable<string> RemovePrefix(IEnumerable<string> querySameSignWords)
     {
-        return querySameSignWords.Select(w=>w.Substring(1, w.Length - 1));
+        return querySameSignWords.Select(word =>
+        {
+            if (word.StartsWith("+") || word.StartsWith("-"))
+            {
+                word = word.Substring(1);
+            }
+            if (word.StartsWith("\"") && word.EndsWith("\""))
+            {
+                word = word.Substring(1, word.Length - 2);
+            }
+            return word;
+        });
     }
 }

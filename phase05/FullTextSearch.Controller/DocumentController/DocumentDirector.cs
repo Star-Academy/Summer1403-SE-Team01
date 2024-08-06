@@ -9,6 +9,7 @@ public class DocumentDirector : IDocumentDirector
         documentBuilder.BuildName(name);
         documentBuilder.BuildPath(path);
         documentBuilder.BuildText(text);
+        documentBuilder.DeleteExtraSpace();
         documentBuilder.BuildWords();
     }
 

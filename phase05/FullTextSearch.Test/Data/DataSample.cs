@@ -5,33 +5,6 @@ namespace FullTextSearch.Test.Data
     public static class DataSample
     {
         
-        /*
-         Document document1 = new Document()
-            {
-                Name = "DOC1",
-                Path = "./ResourcesTest/Doc1",
-                Text = "reza ali mohammad hello",
-                Words = new List<string> { "reza", "ali", "mohammad", "hello" },
-            };
-
-            Document document2 = new Document()
-            {
-                Name = "DOC2",
-                Path = "./ResourcesTest/Doc2",
-                Text = "reza ali orange hello",
-                Words = new List<string> { "reza", "ali", "orange", "hello" },
-            };
-            
-            Document document3 = new Document()
-            {
-                Name = "DOC3",
-                Path = "./ResourcesTest/Doc3",
-                Text = "cat mouce hello",
-                Words = new List<string> { "cat", "mouce", "hello" },
-            };
-
-         */
-        
         public static List<Document> GetDocuments()
         {
             Document document1 = new Document()
@@ -64,13 +37,18 @@ namespace FullTextSearch.Test.Data
         {
             return new Dictionary<string, IEnumerable<Document>>
             {
-                { "reza", new List<Document> { document1, document2 } },
-                { "mohammad", new List<Document> { document1 } },
-                { "ali", new List<Document> { document1, document2 } },
-                { "hello", new List<Document> { document1, document2, document3 } },
-                { "mouce", new List<Document> { document3 } },
-                { "orange", new List<Document> { document2 } },
-                { "cat", new List<Document> { document1 } },
+                { "reza", new List<Document> { document1, document2, document3 } },
+                { "mohammad", new List<Document> { document2, document3 } },
+                { "ali", new List<Document> { document1, document3 } },
+                { "hello", new List<Document> { document1, document2 } },
+                { "reza ali", new List<Document> { document3, document1 } },
+                { "reza ali hello", new List<Document> { document1 } },
+                { "ali hello", new List<Document> { document1 } },
+                { "reza mohammad", new List<Document> { document2 } },
+                { "reza mohammad hello", new List<Document> { document2 } },
+                { "mohammad hello", new List<Document> { document2 } },
+                { "reza ali mohammad", new List<Document> { document3 } },
+                { "ali mohammad", new List<Document> { document3 } },
             };
         }
         
