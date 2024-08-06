@@ -31,4 +31,4 @@ class Program
             searchService.Search(input, invertedIndex).documents.ToList().ForEach(Console.WriteLine);
         }
     }
-}
+}//cat +reza -demand

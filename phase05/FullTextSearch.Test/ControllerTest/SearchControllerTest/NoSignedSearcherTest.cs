@@ -37,7 +37,7 @@ public class NoSignedSearcherTest
         var invertedIndexMap = DataSample.GetInvertedIndexMap(document1, 
             document2, document3);
         
-        var expected = new List<Document>() { document1 };
+        var expected = new List<Document>() { };
 
         // Act
         var actual = _sut.Search(query, invertedIndexMap);

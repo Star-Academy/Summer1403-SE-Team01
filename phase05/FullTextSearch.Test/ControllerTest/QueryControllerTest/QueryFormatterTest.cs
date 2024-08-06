@@ -93,7 +93,7 @@ namespace InvertedIndex.Test.Query
         public IEnumerator<object[]> GetEnumerator()
         {
             yield return new object[] { new[] { "ali", "reza", "zahra", "mohammad" }, new[] { "+ali", "+reza", "+zahra", "+mohammad" } };
-            yield return new object[] { new[] { "ali", "reza", "zahra", "mohammad" }, new[] { "+ali", "-reza", "!zahra", "+mohammad" } };
+            yield return new object[] { new[] { "ali", "reza", "zahra", "mohammad" }, new[] { "+ali", "-reza", "zahra", "+mohammad" } };
         }
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();

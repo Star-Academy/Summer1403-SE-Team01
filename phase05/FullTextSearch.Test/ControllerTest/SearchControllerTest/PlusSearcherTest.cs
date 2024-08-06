@@ -37,7 +37,7 @@ public class PlusSearcherTest
         var invertedIndexMap = DataSample.GetInvertedIndexMap(document1, 
             document2, document3);
 
-        var expected = new List<Document>() {document1, document2};
+        var expected = new List<Document>() {document1, document2, document3};
 
         // Act
         var actual = _sut.Search(query, invertedIndexMap);

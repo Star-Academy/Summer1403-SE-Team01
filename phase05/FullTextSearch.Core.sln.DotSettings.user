@@ -5,14 +5,8 @@
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=0dc70f72_002Ddebb_002D43b0_002Dbbbc_002D5f0d7519d5d1/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="GetUniversal_WithEmptyIndex_Returns_EmptyList" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;Project Location="E:\programming c#\phase04_02\Summer1403-SE-Team01\phase04\FullTextSearch.Test" Presentation="&amp;lt;FullTextSearch.Test&amp;gt;" /&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=4c392acc_002D661f_002D46eb_002D84f1_002De0d8f2069723/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Filter_ShouldReturnFilteredDocuments_WhenDocumentsContainMinusWords" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;xUnit::F90AFE67-456D-4A8D-90DF-86CF0BD1DD99::net8.0::FullTextSearch.Test.ControllerTest.ResultControllerTest.MinusFilterTest.Filter_ShouldReturnFilteredDocuments_WhenDocumentsContainMinusWords&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::F90AFE67-456D-4A8D-90DF-86CF0BD1DD99::net8.0::QueryBuilderTests.BuildText_ShouldSetTextInQuery&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::F90AFE67-456D-4A8D-90DF-86CF0BD1DD99::net8.0::QueryBuilderTests.BuildWordsBySign_ShouldPopulateWordsBySign&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::F90AFE67-456D-4A8D-90DF-86CF0BD1DD99::net8.0::FullTextSearch.Test.ControllerTest.InvertedIndexControllerTest.InvertedIndexMapperTests.Map_ShouldReturnCorrectInvertedIndex_WhenGivenDocuments&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::F90AFE67-456D-4A8D-90DF-86CF0BD1DD99::net8.0::FullTextSearch.Test.ControllerTest.InvertedIndexMapperTests.Map_ShouldReturnCorrectInvertedIndex_WhenGivenDocuments&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=4c392acc_002D661f_002D46eb_002D84f1_002De0d8f2069723/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Filter_ShouldReturnFilteredDocuments_WhenDocumentsContainMinusWords" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;Project Location="C:\Users\amir\Desktop\mohaymen-phase\Summer1403-SE-Team01\phase05\FullTextSearch.Test" Presentation="&amp;lt;FullTextSearch.Test&amp;gt;" /&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=bb444136_002Da189_002D4088_002Da62d_002D367d8e5ca578/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Split_ShouldReturnExpectedResults" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;Or&gt;&#xD;
@@ -28,10 +22,16 @@
     &lt;ProjectFile&gt;F90AFE67-456D-4A8D-90DF-86CF0BD1DD99/d:ServiceTest/d:InitializeServiceTest/f:InitializeServiceTest.cs&lt;/ProjectFile&gt;&#xD;
   &lt;/Or&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=cd3c73cd_002D4098_002D4edb_002Dbdc9_002D5214aa15d3ad/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="BuildWordsBySign_Should_OrganizeWordsCorrectly_ForSignedWords" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;xUnit::F90AFE67-456D-4A8D-90DF-86CF0BD1DD99::net8.0::FullTextSearch.Test.ControllerTest.ResultControllerTest.MinusFilterTest.Filter_ShouldReturnFilteredDocuments_WhenDocumentsContainMinusWords&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::F90AFE67-456D-4A8D-90DF-86CF0BD1DD99::net8.0::QueryBuilderTests.BuildText_ShouldSetTextInQuery&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::F90AFE67-456D-4A8D-90DF-86CF0BD1DD99::net8.0::QueryBuilderTests.BuildWordsBySign_ShouldPopulateWordsBySign&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=cd3c73cd_002D4098_002D4edb_002Dbdc9_002D5214aa15d3ad/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="BuildWordsBySign_Should_OrganizeWordsCorrectly_ForSignedWords" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;Or&gt;&#xD;
+    &lt;TestAncestor&gt;&#xD;
+      &lt;TestId&gt;xUnit::F90AFE67-456D-4A8D-90DF-86CF0BD1DD99::net8.0::FullTextSearch.Test.ControllerTest.ResultControllerTest.MinusFilterTest.Filter_ShouldReturnFilteredDocuments_WhenDocumentsContainMinusWords&lt;/TestId&gt;&#xD;
+      &lt;TestId&gt;xUnit::F90AFE67-456D-4A8D-90DF-86CF0BD1DD99::net8.0::QueryBuilderTests.BuildText_ShouldSetTextInQuery&lt;/TestId&gt;&#xD;
+      &lt;TestId&gt;xUnit::F90AFE67-456D-4A8D-90DF-86CF0BD1DD99::net8.0::QueryBuilderTests.BuildWordsBySign_ShouldPopulateWordsBySign&lt;/TestId&gt;&#xD;
+    &lt;/TestAncestor&gt;&#xD;
+    &lt;ProjectFolder&gt;F90AFE67-456D-4A8D-90DF-86CF0BD1DD99/d:ControllerTest/d:DocumentControllerTest&lt;/ProjectFolder&gt;&#xD;
+    &lt;ProjectFolder&gt;F90AFE67-456D-4A8D-90DF-86CF0BD1DD99/d:ControllerTest/d:InvertedIndexControllerTest&lt;/ProjectFolder&gt;&#xD;
+    &lt;ProjectFolder&gt;F90AFE67-456D-4A8D-90DF-86CF0BD1DD99/d:ControllerTest/d:QueryControllerTest&lt;/ProjectFolder&gt;&#xD;
+    &lt;ProjectFolder&gt;F90AFE67-456D-4A8D-90DF-86CF0BD1DD99/d:ControllerTest/d:SearchControllerTest&lt;/ProjectFolder&gt;&#xD;
+  &lt;/Or&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
