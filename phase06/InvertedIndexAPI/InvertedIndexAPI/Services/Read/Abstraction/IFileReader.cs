@@ -2,5 +2,5 @@ namespace InvertedIndex.Abstraction.Read;
 
 public interface IFileReader
 {
-    Task<string> ReadAsync(string path);
+    string ReadAsync(string path);
 }

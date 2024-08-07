@@ -24,7 +24,7 @@ public class InitializeService : IInitializeService
         _path = path;
     }
 
-    public async Task<Dictionary<string, IEnumerable<Document>>> Initialize(string directoryPath)
+    public Dictionary<string, IEnumerable<Document>> Initialize(string directoryPath)
     {
         List<Document> documents = new List<Document>();
         var paths = _directory.GetFiles(directoryPath);
@@ -32,7 +32,7 @@ public class InitializeService : IInitializeService
         {
             IDocumentBuilder documentBuilder =
                 new DocumentBuilder(new DocumentFormatter());
-            _documentDirector.Construct(_path.GetFileName(p), p,await _fileReader.ReadAsync(p), documentBuilder);
+            _documentDirector.Construct(_path.GetFileName(p), p, _fileReader.ReadAsync(p), documentBuilder);
             documents.Add(documentBuilder.GetDocument());
         }
         return _invertedIndexMapper.Map(documents);

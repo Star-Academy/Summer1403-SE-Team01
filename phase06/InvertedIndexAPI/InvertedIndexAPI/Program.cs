@@ -30,7 +30,7 @@ builder.Services.AddScoped<ISearchService, SearchService>();
 
 
 //builder.Services.AddScoped<IServiceProvider, ServiceProvider>();
-builder.Services.AddSingleton<IInitializeServices2, InitializeServices2>();
+builder.Services.AddSingleton<IInitializeServices2, InitializeServicesDriver>();
 
 
 var app = builder.Build();

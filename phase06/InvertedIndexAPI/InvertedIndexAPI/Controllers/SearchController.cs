@@ -14,7 +14,7 @@ public class SearchController : ControllerBase
 
     public SearchController(IInitializeServices2 initializeServices2, ISearchService searchService)
     {
-        initializeServices2.StartAsync_1();
+        initializeServices2.Drive();
         _searchService = searchService;
     }
 
@@ -22,8 +22,8 @@ public class SearchController : ControllerBase
     [HttpGet("{input}")]
     public IActionResult ResponseQuery([FromRoute]string input)
     {
-        var result = _searchService.Search(input, InitializeServices2.InvertedIndex);
-        return Ok(result.documents);
+        var result = _searchService.Search(input, InitializeServicesDriver.InvertedIndex);
+        return Ok(result.documents.Count());
     }
     
 }

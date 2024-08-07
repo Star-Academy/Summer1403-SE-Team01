@@ -4,8 +4,8 @@ namespace InvertedIndex.Controller.Read;
 
 public class TextFileReader : IFileReader
 {
-    public async Task<string> ReadAsync(string path)
+    public string ReadAsync(string path)
     {
-        return await File.ReadAllTextAsync(path);
+        return  File.ReadAllText(path);
     }
 }
