@@ -1,0 +1,6 @@
+@InvertedIndexAPI_HostAddress = http://localhost:5135
+
+POST {{InvertedIndexAPI_HostAddress}}/Search/ResponseQuery/
+Accept: application/json
+
+###
