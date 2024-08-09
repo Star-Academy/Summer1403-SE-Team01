@@ -10,27 +10,21 @@ public class NoSignedSearcher : ISearcher
     
     public IEnumerable<Document> Search(Query query, Dictionary<string, IEnumerable<Document>> invertedIndex)
     {
-        IEnumerable<Document> ordinaryDocs = new List<Document>();
+        var ordinaryDocs = _universalSearch.GetUniversal(invertedIndex);
 
-        if(query.WordsBySign[Sign].ToList().Count == 0)
-            ordinaryDocs = _universalSearch.GetUniversal(invertedIndex);
-        
-        else
+        if (query.WordsBySign[Sign].ToList().Count != 0)
         {
             try
             {
-                ordinaryDocs = query.WordsBySign[Sign]
-                    .Select(w=>invertedIndex[w])
-                    .SelectMany(d=>d)
-                    .Distinct()
-                    .ToList();
+                query.WordsBySign[Sign]
+                    .ToList().ForEach(w => ordinaryDocs = ordinaryDocs.Intersect(invertedIndex[w]));
             } 
             catch(KeyNotFoundException e) 
             {
                 ordinaryDocs.ToList().Clear();
             }
         }
-        
+
         return ordinaryDocs;
     }
 }
