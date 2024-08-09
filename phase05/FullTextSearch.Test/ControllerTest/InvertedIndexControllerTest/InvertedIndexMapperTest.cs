@@ -1,13 +1,11 @@
-using System.Collections.Generic;
-using System.Linq;
-using Xunit;
-using FullTextSearch.Controller;
 using FullTextSearch.Controller.InvertedIndexController;
+using FullTextSearch.Controller.InvertedIndexController.Abstraction;
 using FullTextSearch.Core;
 using FullTextSearch.Test.Data;
+using Xunit;
 using Assert = Xunit.Assert;
 
-namespace FullTextSearch.Test.ControllerTest
+namespace FullTextSearch.Test.ControllerTest.InvertedIndexControllerTest
 {
     public class InvertedIndexMapperTests
     {
@@ -15,7 +13,7 @@ namespace FullTextSearch.Test.ControllerTest
 
         public InvertedIndexMapperTests()
         {
-            _sut = new InvertedIndexMapper(); // Assuming this is the correct implementation
+            _sut = new InvertedIndexMapper();
         }
 
         [Fact]
@@ -24,9 +22,9 @@ namespace FullTextSearch.Test.ControllerTest
             // Arrange
             var documentList = DataSample.GetDocuments();
 
-            Document document1 = documentList[0];
-            Document document2 = documentList[1];
-            Document document3 = documentList[2];
+            var document1 = documentList[0];
+            var document2 = documentList[1];
+            var document3 = documentList[2];
 
             var documents = new List<Document>
             {
@@ -37,24 +35,10 @@ namespace FullTextSearch.Test.ControllerTest
                 document2, document3);
 
             // Act
-            var result = _sut.Map(documents);
+            var actual = _sut.Map(documents);
 
             // Assert
-            Assert.NotNull(result);
-            Assert.NotNull(expected);
-            Assert.Equal(expected.Count, result.Count);
-
-            // Check if both dictionaries have the same keys
-            foreach (var key in expected.Keys)
-            {
-                Assert.True(result.TryGetValue(key, out var resultValues), $"Key '{key}' not found in the result dictionary.");
-
-                var expectedValuesSet = new HashSet<Document>(expected[key]);
-                var resultValuesSet = new HashSet<Document>(resultValues);
-
-                // Assert that both sets contain the same elements
-                Assert.Equal(expectedValuesSet, resultValuesSet);
-            }
+            Assert.Equivalent(expected, actual);
         }
     }
 }

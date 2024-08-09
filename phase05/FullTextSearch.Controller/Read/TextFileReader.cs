@@ -1,6 +1,6 @@
-using InvertedIndex.Abstraction.Read;
+using FullTextSearch.Controller.Read.Abstraction;
 
-namespace InvertedIndex.Controller.Read;
+namespace FullTextSearch.Controller.Read;
 
 public class TextFileReader : IFileReader
 {

@@ -1,4 +1,4 @@
-
+using FullTextSearch.Controller.SearchController.Abstraction;
 using FullTextSearch.Core;
 
 namespace FullTextSearch.Controller.SearchController;
@@ -6,28 +6,28 @@ namespace FullTextSearch.Controller.SearchController;
 public class NoSignedSearcher : ISearcher
 {
     public char Sign {get; init;} = ' ';
-    public UniversalSearch universalSearch = new UniversalSearch();
+    private readonly UniversalSearch _universalSearch = new UniversalSearch();
     
-    public IEnumerable<Document> Search(Query query, Dictionary<string, IEnumerable<Document>> InvertedIndex)
+    public IEnumerable<Document> Search(Query query, Dictionary<string, IEnumerable<Document>> invertedIndex)
     {
         IEnumerable<Document> ordinaryDocs = new List<Document>();
 
         if(query.WordsBySign[Sign].ToList().Count == 0)
-            ordinaryDocs = universalSearch.GetUniversal(InvertedIndex);
+            ordinaryDocs = _universalSearch.GetUniversal(invertedIndex);
         
         else
         {
-            try 
+            try
             {
                 ordinaryDocs = query.WordsBySign[Sign]
-                    .Select(w=>InvertedIndex[w])
+                    .Select(w=>invertedIndex[w])
                     .SelectMany(d=>d)
                     .Distinct()
                     .ToList();
             } 
             catch(KeyNotFoundException e) 
             {
-                ordinaryDocs.ToList().Clear(); //
+                ordinaryDocs.ToList().Clear();
             }
         }
         

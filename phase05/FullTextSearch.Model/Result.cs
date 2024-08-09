@@ -4,11 +4,11 @@ public class Result
 {
     public Result()
     {
-        documents = new List<Document>();
-        documentsBySign = new Dictionary<char, IEnumerable<Document>>();
+        Documents = new List<Document>();
+        DocumentsBySign = new Dictionary<char, IEnumerable<Document>>();
     }
-    public IEnumerable<Document> documents { get; set; }    
-    public Dictionary<char, IEnumerable<Document>> documentsBySign {get; set;}
+    public IEnumerable<Document> Documents { get; set; }    
+    public Dictionary<char, IEnumerable<Document>> DocumentsBySign {get; set;}
     
     public override bool Equals(object obj) 
     {
@@ -22,11 +22,11 @@ public class Result
     {
         if (ReferenceEquals(null, other)) return false;
         if (ReferenceEquals(this, other)) return true;
-        if (!this.documents.SequenceEqual(other.documents)) return false;
-        if(!this.documentsBySign.Count.Equals(other.documentsBySign.Count)) return false;
-        foreach (var entry in this.documentsBySign)
+        if (!this.Documents.SequenceEqual(other.Documents)) return false;
+        if(!this.DocumentsBySign.Count.Equals(other.DocumentsBySign.Count)) return false;
+        foreach (var entry in this.DocumentsBySign)
         {
-            if (!entry.Value.SequenceEqual(other.documentsBySign[entry.Key]))
+            if (!entry.Value.SequenceEqual(other.DocumentsBySign[entry.Key]))
             {
                 return false;
             }

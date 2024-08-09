@@ -1,4 +1,5 @@
 using FullTextSearch.Controller.SearchController;
+using FullTextSearch.Controller.SearchController.Abstraction;
 using FullTextSearch.Core;
 
 namespace FullTextSearch.Controller.ResultController.Abstraction;

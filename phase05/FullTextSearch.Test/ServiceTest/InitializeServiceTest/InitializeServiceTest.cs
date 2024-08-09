@@ -1,11 +1,11 @@
 using FullTextSearch.Controller.DocumentController;
 using FullTextSearch.Controller.DocumentController.Abstraction;
 using FullTextSearch.Controller.InvertedIndexController;
+using FullTextSearch.Controller.InvertedIndexController.Abstraction;
 using FullTextSearch.Controller.Read.Abstraction;
 using FullTextSearch.Core;
 using FullTextSearch.Service.InitializeService;
 using FullTextSearch.Test.Data;
-using InvertedIndex.Abstraction.Read;
 using NSubstitute;
 using Xunit;
 using Assert = Xunit.Assert;

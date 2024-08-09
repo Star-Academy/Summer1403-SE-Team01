@@ -1,7 +1,6 @@
-using FullTextSearch.Controller.ResultController.Abstraction;
 using FullTextSearch.Core;
 
-namespace FullTextSearch.Controller.ResultController;
+namespace FullTextSearch.Controller.ResultController.Abstraction;
 
 public interface IFilterDriver {
     void DriveFilterer(IEnumerable<IFilter> filterers, Result result);

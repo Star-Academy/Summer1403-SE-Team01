@@ -1,12 +1,10 @@
 using FullTextSearch.Controller.DocumentController;
 using FullTextSearch.Controller.DocumentController.Abstraction;
-using FullTextSearch.Core;
-using InvertedIndex.Controller.Document;
 using NSubstitute;
 using Xunit;
 using Assert = Xunit.Assert;
 
-namespace FullTextSearch.Test.DocumentTest
+namespace FullTextSearch.Test.ControllerTest.DocumentControllerTest
 {
     public class DocumentBuilderTest
     {
@@ -23,39 +21,42 @@ namespace FullTextSearch.Test.DocumentTest
         public void BuildName_ShouldSetDocumentName_WhenGivenName()
         {
             // Arrange
-            var name = "Ali";
+            var expected = "Ali";
             
             // Act
-            _sut.BuildName(name);
+            _sut.BuildName(expected);
+            var actual = _sut.GetDocument().Name;
             
             // Assert
-            Assert.Equal(name, _sut.GetDocument().Name);
+            Assert.Equivalent(expected, actual);
         }
         
         [Fact]
         public void BuildPath_ShouldSetDocumentPath_WhenGivenPath()
         {
             // Arrange
-            var path = "/document";
+            var expected = "/document";
             
             // Act
-            _sut.BuildPath(path);
+            _sut.BuildPath(expected);
+            var actual = _sut.GetDocument().Path;
             
             // Assert
-            Assert.Equal(path, _sut.GetDocument().Path);
+            Assert.Equivalent(expected, actual);
         }
         
         [Fact]
         public void BuildText_ShouldSetDocumentText_WhenGivenText()
         {
             // Arrange
-            var text = "Ali is someone!";
+            var expected = "Ali is someone!";
             
             // Act
-            _sut.BuildText(text);
+            _sut.BuildText(expected);
+            var actual = _sut.GetDocument().Text;
             
             // Assert
-            Assert.Equal(text, _sut.GetDocument().Text);
+            Assert.Equivalent(expected, actual);
         }
         
         [Fact]
@@ -64,19 +65,19 @@ namespace FullTextSearch.Test.DocumentTest
             // Arrange
             var sampleText = "hello world";
             var upperText = sampleText.ToUpper();
-            var expectedWords = new List<string> { "HELLO", "WORLD" };
+            var expected = new List<string> { "HELLO", "WORLD" };
 
             _documentFormatter.ToUpper(sampleText).Returns(upperText);
-            _documentFormatter.Split(upperText, " ").Returns(expectedWords);
+            _documentFormatter.Split(upperText, " ").Returns(expected);
 
             _sut.BuildText(sampleText);
 
             // Act
             _sut.BuildWords();
-            var document = _sut.GetDocument();
+            var actual = _sut.GetDocument().Words;
 
             // Assert
-            Assert.Equal(expectedWords, document.Words);
+            Assert.Equivalent(expected, actual);
         }
     }
 }

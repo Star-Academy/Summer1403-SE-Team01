@@ -1,9 +1,10 @@
 using FullTextSearch.Controller.DocumentController;
 using FullTextSearch.Controller.DocumentController.Abstraction;
 using FullTextSearch.Controller.InvertedIndexController;
+using FullTextSearch.Controller.InvertedIndexController.Abstraction;
 using FullTextSearch.Controller.Read.Abstraction;
 using FullTextSearch.Core;
-using InvertedIndex.Abstraction.Read;
+using FullTextSearch.Service.InitializeService.Abstraction;
 
 namespace FullTextSearch.Service.InitializeService;
 

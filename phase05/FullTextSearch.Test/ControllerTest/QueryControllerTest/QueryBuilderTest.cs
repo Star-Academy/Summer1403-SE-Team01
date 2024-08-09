@@ -1,25 +1,21 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using Xunit;
-using NSubstitute;
 using FullTextSearch.Controller.QueryController;
 using FullTextSearch.Controller.QueryController.Abstraction;
-using FullTextSearch.Controller.TextFormatter.Abstraction;
 using FullTextSearch.Core;
+using NSubstitute;
+using Xunit;
 using Assert = Xunit.Assert;
+
+namespace FullTextSearch.Test.ControllerTest.QueryControllerTest;
 
 public class QueryBuilderTests
 {
-    private readonly IQueryFormatter _queryFormatter;
-    private readonly ITextFormatter _textFormatter;
-    private readonly QueryBuilder _queryBuilder;
+    private readonly IWordCollectorDriver _wordCollectorDriver;
+    private readonly QueryBuilder _sut;
 
     public QueryBuilderTests()
     {
-        _queryFormatter = Substitute.For<IQueryFormatter>();
-        _textFormatter = Substitute.For<ITextFormatter>();
-        _queryBuilder = new QueryBuilder(_queryFormatter, _textFormatter);
+        _wordCollectorDriver = Substitute.For<IWordCollectorDriver>();
+        _sut = new QueryBuilder(_wordCollectorDriver);
     }
 
     [Fact]
@@ -27,89 +23,40 @@ public class QueryBuilderTests
     {
         // Arrange
         var text = "sample text";
+        var expected = text;
 
         // Act
-        _queryBuilder.BuildText(text);
+        _sut.BuildText(text);
+        var actual = _sut.GetQuery().Text;
 
         // Assert
-        var query = _queryBuilder.GetQuery();
-        Assert.Equal(text, query.Text);
+        var query = _sut.GetQuery();
+        Assert.Equivalent(expected, actual);
     }
-
+    
+    
     [Fact]
     public void BuildWordsBySign_ShouldPopulateWordsBySign()
     {
         // Arrange
-        var text = "+cat! -z \"ali is\"";
-        var signs = new[] { '+', '-' };
-        var splittedText = new List<string> { "+CAT!" , "-Z", "\'ali", "is\""};
-        var quoteIndices = new List<int>(){2, 3}; 
-        var indicesToRemove = new List<int>(){2, 3};
-        var filteredWords = new List<string>(){ "+CAT!", "-Z" };
-        var concatenatedQuotes = new List<string>(){"\"ali is\""};
-
-        _queryFormatter.Split(Arg.Any<string>(), " ").Returns(splittedText);
-        _queryFormatter.ToUpper(Arg.Any<string>()).Returns(callInfo => callInfo.Arg<string>().ToUpper());
-        _textFormatter.GetQuoteIndices(Arg.Any<List<string>>()).Returns(quoteIndices);
-        _textFormatter.GetIndicesToRemove(Arg.Any<List<int>>()).Returns(indicesToRemove);
-        _textFormatter.FilterOutIndices(Arg.Any<List<string>>(), Arg.Any<List<int>>()).Returns(filteredWords);
-        _textFormatter.ConcatenateQuotedWords(Arg.Any<List<string>>(), Arg.Any<List<int>>()).Returns(concatenatedQuotes);
+        var text = "+ali -hassan \"karim zahra\" +\"ali mohammad\" kabir hoda -leila";
+        var collectors = new List<IWordCollector>()
+        {
+            new MinusWordCollector(),
+            new PlusWordsCollector(),
+            new NoSignedWordCollector()
+        };
         
-        _queryFormatter.CollectBySign(
-            Arg.Is<IEnumerable<string>>(x => x.SequenceEqual(new List<string> { "+CAT!" , "-Z" })), 
-            '+').Returns(new List<string> { "+CAT!" });
-        
-        _queryFormatter.CollectBySign(
-            Arg.Is<IEnumerable<string>>(x => x.SequenceEqual(new List<string> { "-Z" })), 
-            '-').Returns(new List<string> { "-Z" });
-
-        _queryFormatter.RemovePrefix(
-                Arg.Is<IEnumerable<string>>(x =>
-                    x.SequenceEqual(new List<string> { "+CAT!" })))
-            .Returns(new List<string>() { "CAT!" });
-        
-        _queryFormatter.RemovePrefix(
-                Arg.Is<IEnumerable<string>>(x => 
-                    x.SequenceEqual(new List<string> { "-Z" })))
-            .Returns(new List<string>(){"Z"});
-        
-        _queryFormatter.RemovePrefix(
-                Arg.Is<IEnumerable<string>>(x => 
-                    x.SequenceEqual(new List<string> { "\"ali is\"" })))
-            .Returns(new List<string>(){"ali is"});
-        
-        
-        _queryFormatter.CollectBySign(
-            Arg.Is<IEnumerable<string>>(x => x.SequenceEqual(new List<string> { "\"ali is\"" })), 
-            '+').Returns(new List<string> {  });
-        
-        _queryFormatter.CollectBySign(
-            Arg.Is<IEnumerable<string>>(x => x.SequenceEqual(new List<string> { "\"ali is\"" })), 
-            '-').Returns(new List<string> {  });
-        
-        _queryBuilder.BuildText(text);
+        var query = new Query();
+        query.Text = text;
+        _wordCollectorDriver.DriveCollect(collectors, query);
+        var expected = query.WordsBySign;
 
         // Act
-        _queryBuilder.BuildWordsBySign(signs);
+        _sut.BuildWordsBySign(collectors);
+        var actual = _sut.GetQuery().WordsBySign;
 
         // Assert
-        var query = _queryBuilder.GetQuery();
-
-        // Expected dictionary
-        var expected = new Dictionary<char, List<string>>
-        {
-            { '+', new List<string> { "CAT!" } },
-            { '-', new List<string>() {"Z"} },
-            { ' ', new List<string>() {"ali is"}}
-        };
-
-        // Compare keys
-        Assert.Equal(expected.Keys, query.WordsBySign.Keys);
-
-        // Compare values for each key
-        foreach (var key in expected.Keys)
-        {
-            Assert.Equal(expected[key], query.WordsBySign[key]);
-        }
+        Assert.Equivalent(expected, actual);
     }
 }

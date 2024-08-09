@@ -1,4 +1,5 @@
 using FullTextSearch.Controller.SearchController;
+using FullTextSearch.Controller.SearchController.Abstraction;
 using FullTextSearch.Core;
 using FullTextSearch.Test.Data;
 using Xunit;
@@ -18,7 +19,7 @@ public class NoSignedSearcherTest
     public void Search_ShouldReturnDocumentsContainingNoSignedWords_WhenGivenQueryAndInvertedIndex()
     {
         // Arrange
-        Query query = new Query();
+        var query = new Query();
         query.Text = "cat +reza -demand!";
         
         query.WordsBySign = new Dictionary<char, IEnumerable<string>>()
@@ -30,9 +31,9 @@ public class NoSignedSearcherTest
 
         var documentList = DataSample.GetDocuments();
 
-        Document document1 = documentList[0];
-        Document document2 = documentList[1];
-        Document document3 = documentList[2];
+        var document1 = documentList[0];
+        var document2 = documentList[1];
+        var document3 = documentList[2];
 
         var invertedIndexMap = DataSample.GetInvertedIndexMap(document1, 
             document2, document3);
@@ -43,6 +44,6 @@ public class NoSignedSearcherTest
         var actual = _sut.Search(query, invertedIndexMap);
         
         // Assert
-        Assert.True(actual.SequenceEqual(expected));
+        Assert.Equivalent(expected, actual);
     }
 }

@@ -2,11 +2,17 @@ using FullTextSearch.Controller.QueryController.Abstraction;
 
 namespace FullTextSearch.Controller.QueryController;
 
-public class QueryDirector
+public class QueryDirector : IQueryDirector
 {
-    public void Construct(string text, IEnumerable<char> signs, IQueryBuilder queryBuilder)
+    public void Construct(string text, IQueryBuilder queryBuilder)
     {
         queryBuilder.BuildText(text);
-        queryBuilder.BuildWordsBySign(signs);
+        queryBuilder.BuildWordsBySign(new List<IWordCollector>()
+        {
+            new MinusWordCollector(), 
+            new PlusWordsCollector(), 
+            new NoSignedWordCollector()
+            
+        });
     }
 }

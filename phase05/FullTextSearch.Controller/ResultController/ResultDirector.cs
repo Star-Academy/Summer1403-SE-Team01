@@ -1,7 +1,7 @@
 using FullTextSearch.Controller.ResultController.Abstraction;
 using FullTextSearch.Controller.SearchController;
+using FullTextSearch.Controller.SearchController.Abstraction;
 using FullTextSearch.Core;
-using Query = NSubstitute.Core.Query;
 
 namespace FullTextSearch.Controller.ResultController;
 

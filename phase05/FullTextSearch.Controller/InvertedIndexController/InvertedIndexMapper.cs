@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using FullTextSearch.Controller.InvertedIndexController.Abstraction;
 using FullTextSearch.Core;
 
 namespace FullTextSearch.Controller.InvertedIndexController;
@@ -20,9 +21,12 @@ public class InvertedIndexMapper : IInvertedIndexMapper
                 for (int endIndex = startIndex + 1; endIndex <= Math.Min(words.Count, startIndex + 5); endIndex++)
                 {
                     var phrase = string.Join(" ", words.Skip(startIndex).Take(endIndex - startIndex));
+                    
                     if (!invertedIndex.ContainsKey(phrase))
-                        invertedIndex[phrase] = new List<Document>();
-                    invertedIndex[phrase].Add(document);
+                        invertedIndex.Add(phrase, new List<Document>(){document});
+                    
+                    else if(!invertedIndex[phrase].Contains(document))
+                        invertedIndex[phrase].Add(document);
                 }
             }
         }

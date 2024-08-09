@@ -1,5 +1,5 @@
 using System.Text.RegularExpressions;
-using InvertedIndex.Controller.Document;
+using FullTextSearch.Controller.DocumentController.Abstraction;
 
 namespace FullTextSearch.Controller.DocumentController;
 

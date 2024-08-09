@@ -21,12 +21,12 @@ public class NoSignedFilterTest
         // Arrange
         var documentList = DataSample.GetDocuments();
 
-        Document document1 = documentList[0];
-        Document document2 = documentList[1];
-        Document document3 = documentList[2];
+        var document1 = documentList[0];
+        var document2 = documentList[1];
+        var document3 = documentList[2];
 
         
-        IEnumerable<Document> documents = new List<Document>() { document1, document2, document3 };
+        var documents = new List<Document>() { document1, document2, document3 };
         
         var documentsBySign = new Dictionary<char, IEnumerable<Document>>
         {
@@ -40,6 +40,6 @@ public class NoSignedFilterTest
         var actual = _sut.Filter(documents, documentsBySign);
 
         // Assert
-        Assert.True(actual.SequenceEqual(expected));
+        Assert.Equivalent(expected, actual);
     }
 }

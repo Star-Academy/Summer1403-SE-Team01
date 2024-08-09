@@ -19,14 +19,16 @@ public class ResultBuilder : IResultBuilder
         _searcherDriver = searcherDriver ?? throw new ArgumentNullException(nameof(searcherDriver));
     }
     
-    public void BuildDocumentsBySign(IEnumerable<ISearcher> searchers, Query query, Dictionary<string, IEnumerable<Document>> invertedIndex)
+    public void BuildDocumentsBySign(IEnumerable<ISearcher> searchers, Query query, 
+        Dictionary<string, IEnumerable<Document>> invertedIndex)
     {
         _searcherDriver.DriveSearch(searchers, query, _result, invertedIndex);
     }
 
-    public void BuildDocuments(IEnumerable<IFilter> filters, Dictionary<string, IEnumerable<Document>> invertedIndex)
+    public void BuildDocuments(IEnumerable<IFilter> filters, 
+        Dictionary<string, IEnumerable<Document>> invertedIndex)
     {
-        _result.documents = new UniversalSearch().GetUniversal(invertedIndex);
+        _result.Documents = new UniversalSearch().GetUniversal(invertedIndex);
         _filterDriver.DriveFilterer(filters, _result);      
     }
     

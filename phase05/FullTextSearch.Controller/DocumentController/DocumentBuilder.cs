@@ -1,7 +1,6 @@
 using System.Text.RegularExpressions;
 using FullTextSearch.Controller.DocumentController.Abstraction;
 using FullTextSearch.Core;
-using InvertedIndex.Controller.Document;
 
 namespace FullTextSearch.Controller.DocumentController;
 
@@ -37,7 +36,9 @@ public class DocumentBuilder : IDocumentBuilder
     }
     public void BuildWords()
     {
-        _document.Words = _documentFormatter.Split(_documentFormatter.ToUpper(_document.Text), " ");
+        _document.Words = _documentFormatter
+            .Split(_documentFormatter
+            .ToUpper(_document.Text), " ");
     }
 
     public Document GetDocument()

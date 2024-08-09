@@ -1,15 +1,13 @@
-using FullTextSearch.Core;
-
-namespace InvertedIndex.Model;
+namespace FullTextSearch.Core;
 
 public class Search
 {
-    public Query query { get; set; }
-    public Result result { get; set; }
+    private Query Query { get; set; }
+    private Result Result { get; set; }
 
     public Search(Query query, Result result)
     {
-        this.query = query;
-        this.result = result;
+        Query = query;
+        Result = result;
     }
 }

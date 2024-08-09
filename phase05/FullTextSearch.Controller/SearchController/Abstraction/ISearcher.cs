@@ -1,6 +1,6 @@
 using FullTextSearch.Core;
 
-namespace FullTextSearch.Controller.SearchController;
+namespace FullTextSearch.Controller.SearchController.Abstraction;
 
 public interface ISearcher
 {

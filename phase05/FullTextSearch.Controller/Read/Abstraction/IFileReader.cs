@@ -1,4 +1,4 @@
-namespace InvertedIndex.Abstraction.Read;
+namespace FullTextSearch.Controller.Read.Abstraction;
 
 public interface IFileReader
 {

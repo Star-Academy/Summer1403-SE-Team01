@@ -2,7 +2,7 @@ using FullTextSearch.Controller.DocumentController;
 using Xunit;
 using Assert = Xunit.Assert;
 
-namespace FullTextSearch.Test
+namespace FullTextSearch.Test.ControllerTest.DocumentControllerTest
 {
     public class DocumentFormatterTest
     {
@@ -20,10 +20,10 @@ namespace FullTextSearch.Test
         public void ToUpper_ShouldConvertTextToUpperCase_WhenGivenText(string expected, string text)
         {
             // Act
-            var result = _sut.ToUpper(text);
+            var actual = _sut.ToUpper(text);
 
             // Assert
-            Assert.Equal(expected, result);
+            Assert.Equivalent(expected, actual);
         }
         
         [Xunit.Theory]
@@ -32,10 +32,10 @@ namespace FullTextSearch.Test
         public void Split_ShouldReturnExpectedWords_WhenGivenTextAndDelimiter(string queryText, string regex, string[] expected)
         {
             // Act
-            IEnumerable<string> result = _sut.Split(queryText, regex);
+            var actual = _sut.Split(queryText, regex);
 
             // Assert
-            Assert.Equal(expected, result);
+            Assert.Equivalent(expected, actual);
         }
     }
 }

@@ -27,9 +27,9 @@ public class ResultBuilderTest
     public void BuildDocumentsBySign_ShouldFillDocumentsBySign_WhenGivenSearchersAndQuery()
     {
         // Arrange
-        IEnumerable<ISearcher> searchers = new List<ISearcher>() {new MinusSearcher(), new PlusSearcher(), new NoSignedSearcher()};
+        var searchers = new List<ISearcher>() {new MinusSearcher(), new PlusSearcher(), new NoSignedSearcher()};
         
-        Query query = new Query();
+        var query = new Query();
         query.Text = "cat +reza -demand";
         query.WordsBySign = new Dictionary<char, IEnumerable<string>>()
         {
@@ -37,53 +37,53 @@ public class ResultBuilderTest
             {'-', new List<string>() {"demand"}},
             {' ', new List<string>() {"cat"}}
         };
-        Result result = new Result();
+        var result = new Result();
         
         var documentList = DataSample.GetDocuments();
 
-        Document document1 = documentList[0];
-        Document document2 = documentList[1];
-        Document document3 = documentList[2];
+        var document1 = documentList[0];
+        var document2 = documentList[1];
+        var document3 = documentList[2];
         
         var invertedIndexMap = DataSample.GetInvertedIndexMap(document1, 
             document2, document3);
         
         _searcherDriver.DriveSearch(searchers, query, result, invertedIndexMap);
+        var expected = result.DocumentsBySign;
         
         // Act
         _sut.BuildDocumentsBySign(searchers, query, invertedIndexMap);
+        var actual = _sut.GetResult().DocumentsBySign;
         
         // Assert
-        Assert.Equal(result.documentsBySign.Keys.Count, _sut.GetResult().documentsBySign.Keys.Count);
-        foreach (var entry in _sut.GetResult().documentsBySign)
-        {
-            Assert.True(entry.Value.SequenceEqual(result.documentsBySign[entry.Key]));
-        }
+        Assert.Equivalent(expected, actual);
     }
     
-    [Test]
+    [Fact]
     public void BuildDocuments_ShouldFillResultDocuments_WhenGivenFiltersAndInvertedIndex()
     {
         // Arrange
-        IEnumerable<IFilter> filters = new List<IFilter>() {new NoSignedFilter(), new MinusFilter(), new PlusFilter()};
-        Result result = new Result();
+        var filters = new List<IFilter>() {new NoSignedFilter(), new MinusFilter(), new PlusFilter()};
+        var result = new Result();
         
         var documentList = DataSample.GetDocuments();
 
-        Document document1 = documentList[0];
-        Document document2 = documentList[1];
-        Document document3 = documentList[2];
+        var document1 = documentList[0];
+        var document2 = documentList[1];
+        var document3 = documentList[2];
 
         var invertedIndexMap = DataSample.GetInvertedIndexMap(document1, 
             document2, document3);
         
-        result.documents = new UniversalSearch().GetUniversal(invertedIndexMap);
-        _filterDriver.DriveFilterer(filters, result);      
+        result.Documents = new UniversalSearch().GetUniversal(invertedIndexMap);
+        _filterDriver.DriveFilterer(filters, result);
+        var expected = result.Documents;
 
         // Act
         _sut.BuildDocuments(filters, invertedIndexMap);
+        var actual = _sut.GetResult().Documents;
         
         // Assert
-        Assert.True(result.documents.SequenceEqual(_sut.GetResult().documents));
+        Assert.Equivalent(expected, actual);
     }
 }

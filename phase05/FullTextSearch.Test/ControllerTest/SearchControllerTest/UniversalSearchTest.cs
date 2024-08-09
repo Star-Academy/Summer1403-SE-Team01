@@ -4,7 +4,7 @@ using FullTextSearch.Test.Data;
 using Xunit;
 using Assert = Xunit.Assert;
 
-namespace FullTextSearch.Test.SearchControllerTest;
+namespace FullTextSearch.Test.ControllerTest.SearchControllerTest;
 
 public class UniversalSearchTest
 {
@@ -21,25 +21,21 @@ public class UniversalSearchTest
         // Arrange
         var documentList = DataSample.GetDocuments();
 
-        Document document1 = documentList[0];
-        Document document2 = documentList[1];
-        Document document3 = documentList[2];
+        var document1 = documentList[0];
+        var document2 = documentList[1];
+        var document3 = documentList[2];
             
         var invertedIndexMap = DataSample.GetInvertedIndexMap(document1, 
             document2, document3);
 
             
-        var expectedDocuments = new List<Document> { document1, document2, document3 };
+        var expected = new List<Document> { document1, document2, document3 };
 
         // Act
-        var result = _sut.GetUniversal(invertedIndexMap).ToList();
+        var actual = _sut.GetUniversal(invertedIndexMap).ToList();
 
         // Assert
-        Assert.Equal(expectedDocuments.Count, result.Count);
-        foreach (var doc in expectedDocuments)
-        {
-            Assert.Contains(result, d => d.Equals(doc));
-        }
+        Assert.Equivalent(expected, actual);
     }
     
     [Fact]

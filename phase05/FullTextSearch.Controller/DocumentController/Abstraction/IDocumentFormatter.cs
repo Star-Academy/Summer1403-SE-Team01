@@ -1,4 +1,4 @@
-namespace InvertedIndex.Controller.Document;
+namespace FullTextSearch.Controller.DocumentController.Abstraction;
 
 public interface IDocumentFormatter
 {

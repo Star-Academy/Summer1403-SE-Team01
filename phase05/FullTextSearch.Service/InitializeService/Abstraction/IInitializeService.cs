@@ -1,6 +1,6 @@
 using FullTextSearch.Core;
 
-namespace FullTextSearch.Service.InitializeService;
+namespace FullTextSearch.Service.InitializeService.Abstraction;
 
 public interface IInitializeService
 {
